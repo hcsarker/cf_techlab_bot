@@ -1,0 +1,73 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "hello",
+        "hi",
+        "hey",
+        "assalamualaikum",
+        "salam",
+        "good morning",
+        "good evening",
+        "Namaskar",
+        "Adab"
+      ],
+      "responses": [
+        "Hello! How can I assist you?",
+        "Assalamualaikum! How may I help you?"
+      ]
+    },
+    {
+      "tag": "services",
+      "patterns": [
+        "What services do you provide?",
+        "Apnara ki service den?",
+        "services",
+        "ki ki service ache",
+        "techlab services"
+      ],
+      "responses": [
+        "We provide software development, IT consulting, website development, and technical support."
+      ]
+    },
+    {
+      "tag": "pricing",
+      "patterns": [
+        "service charge koto",
+        "price koto",
+        "cost",
+        "how much is the service cost"
+      ],
+      "responses": [
+        "Our service charge generally starts from 500 BDT depending on project requirements."
+      ]
+    },
+    {
+      "tag": "contact",
+      "patterns": [
+        "How can I contact?",
+        "contact info",
+        "kivabe jogajog korbo",
+        "phone number",
+        "email"
+      ],
+      "responses": [
+        "You can contact us at: +8801XXXXXXXXX or email at support@cftechlab.com."
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "bye",
+        "goodbye",
+        "thank you",
+        "see you"
+      ],
+      "responses": [
+        "Thank you! Have a great day!",
+        "Goodbye! We are always here to help."
+      ]
+    }
+  ]
+}
