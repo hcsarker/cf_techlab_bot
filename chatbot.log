@@ -1,0 +1,36 @@
+2025-11-25 00:15:31,406 - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-11-25 00:15:31,420 - INFO - Model and data loaded successfully
+2025-11-25 00:15:31,422 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.112:5000
+2025-11-25 00:15:31,423 - INFO - [33mPress CTRL+C to quit[0m
+2025-11-25 00:15:46,869 - INFO - 127.0.0.1 - - [25/Nov/2025 00:15:46] "GET /health HTTP/1.1" 200 -
+2025-11-25 00:15:46,879 - INFO - Received message: hello
+2025-11-25 00:15:47,276 - INFO - Predicted tag: greeting, Confidence: 1.00
+2025-11-25 00:15:47,277 - INFO - 127.0.0.1 - - [25/Nov/2025 00:15:47] "POST /chat HTTP/1.1" 200 -
+2025-11-25 00:15:47,288 - INFO - Received message: what services
+2025-11-25 00:15:47,404 - INFO - Predicted tag: services, Confidence: 0.99
+2025-11-25 00:15:47,404 - INFO - 127.0.0.1 - - [25/Nov/2025 00:15:47] "POST /chat HTTP/1.1" 200 -
+2025-11-25 00:16:12,652 - INFO - 127.0.0.1 - - [25/Nov/2025 00:16:12] "GET /health HTTP/1.1" 200 -
+2025-11-25 00:16:12,960 - INFO - Received message: hello
+2025-11-25 00:16:13,071 - INFO - Predicted tag: greeting, Confidence: 1.00
+2025-11-25 00:16:13,071 - INFO - 127.0.0.1 - - [25/Nov/2025 00:16:13] "POST /chat HTTP/1.1" 200 -
+2025-11-25 00:16:22,099 - INFO - 127.0.0.1 - - [25/Nov/2025 00:16:22] "GET /health HTTP/1.1" 200 -
+2025-11-25 00:16:27,611 - INFO - Received message: hello
+2025-11-25 00:16:27,724 - INFO - Predicted tag: greeting, Confidence: 1.00
+2025-11-25 00:16:27,724 - INFO - 127.0.0.1 - - [25/Nov/2025 00:16:27] "POST /chat HTTP/1.1" 200 -
+2025-11-25 00:16:40,487 - INFO - 127.0.0.1 - - [25/Nov/2025 00:16:40] "GET /?id=fb9ef9d5-e197-46d0-be46-2db0496215b8&vscodeBrowserReqId=1764008200475 HTTP/1.1" 200 -
+2025-11-25 00:16:46,384 - INFO - Received message: hi
+2025-11-25 00:16:46,491 - INFO - Predicted tag: greeting, Confidence: 1.00
+2025-11-25 00:16:46,491 - INFO - 127.0.0.1 - - [25/Nov/2025 00:16:46] "POST /chat HTTP/1.1" 200 -
+2025-11-25 00:16:53,955 - INFO - Received message: services
+2025-11-25 00:16:54,069 - INFO - Predicted tag: services, Confidence: 0.99
+2025-11-25 00:16:54,070 - INFO - 127.0.0.1 - - [25/Nov/2025 00:16:54] "POST /chat HTTP/1.1" 200 -
+2025-11-25 00:17:21,122 - INFO - Received message: portfolio
+2025-11-25 00:17:21,243 - INFO - Predicted tag: portfolio, Confidence: 0.99
+2025-11-25 00:17:21,244 - INFO - 127.0.0.1 - - [25/Nov/2025 00:17:21] "POST /chat HTTP/1.1" 200 -
+2025-11-25 00:17:29,957 - INFO - Received message: kakhon khola thake
+2025-11-25 00:17:30,067 - INFO - Predicted tag: office_hours, Confidence: 0.99
+2025-11-25 00:17:30,068 - INFO - 127.0.0.1 - - [25/Nov/2025 00:17:30] "POST /chat HTTP/1.1" 200 -
+2025-11-25 00:17:36,127 - INFO - 127.0.0.1 - - [25/Nov/2025 00:17:36] "GET /?id=fb9ef9d5-e197-46d0-be46-2db0496215b8&vscodeBrowserReqId=1764008256122 HTTP/1.1" 200 -

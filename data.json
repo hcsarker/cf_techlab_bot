@@ -11,11 +11,15 @@
         "good morning",
         "good evening",
         "Namaskar",
-        "Adab"
+        "Adab",
+        "kemon acho",
+        "how are you",
+        "whats up"
       ],
       "responses": [
-        "Hello! How can I assist you?",
-        "Assalamualaikum! How may I help you?"
+        "Hello! How can I assist you today?",
+        "Assalamualaikum! How may I help you?",
+        "Hi there! Welcome to CF TechLab. What can I do for you?"
       ]
     },
     {
@@ -25,10 +29,15 @@
         "Apnara ki service den?",
         "services",
         "ki ki service ache",
-        "techlab services"
+        "techlab services",
+        "what do you offer",
+        "apnader service list",
+        "service list",
+        "what can you do"
       ],
       "responses": [
-        "We provide software development, IT consulting, website development, and technical support."
+        "We provide: 🔹 Custom Software Development 🔹 Website & Web App Development 🔹 Mobile App Development 🔹 IT Consulting 🔹 Technical Support & Maintenance 🔹 Cloud Solutions 🔹 Database Management",
+        "Amader services: Software development, website design & development, mobile apps, IT consulting, cloud solutions ebong technical support."
       ]
     },
     {
@@ -37,10 +46,16 @@
         "service charge koto",
         "price koto",
         "cost",
-        "how much is the service cost"
+        "how much is the service cost",
+        "rate kemon",
+        "budget",
+        "dam koto",
+        "pricing",
+        "quotation"
       ],
       "responses": [
-        "Our service charge generally starts from 500 BDT depending on project requirements."
+        "Our pricing starts from 5,000 BDT for basic projects. For custom solutions, we provide detailed quotations based on requirements. Contact us for a free consultation!",
+        "Service charge project requirements er upor depend kore. Basic website 5,000 BDT theke shuru. Custom quotation er jonno amader contact korun."
       ]
     },
     {
@@ -50,10 +65,178 @@
         "contact info",
         "kivabe jogajog korbo",
         "phone number",
-        "email"
+        "email",
+        "reach you",
+        "get in touch",
+        "contact details",
+        "phone",
+        "mail",
+        "address"
       ],
       "responses": [
-        "You can contact us at: +8801XXXXXXXXX or email at support@cftechlab.com."
+        "📞 Phone: +8801642948324\n📧 Email: techlab.cf@gmail.com\n🌐 Website: https://cftechlab.hcsarker.me/\nWe're available 24/7 for inquiries!",
+        "Amader sathe jogajog korun:\nPhone: +8801642948324\nEmail: techlab.cf@gmail.com"
+      ]
+    },
+    {
+      "tag": "office_hours",
+      "patterns": [
+        "office hours",
+        "kakhon khola thake",
+        "working hours",
+        "office time",
+        "when are you open",
+        "kaj er time",
+        "business hours"
+      ],
+      "responses": [
+        "We are available 24/7 online! For physical office visits, please schedule an appointment.",
+        "Amra 24/7 online available. Office visit er jonno appointment nin."
+      ]
+    },
+    {
+      "tag": "location",
+      "patterns": [
+        "office location",
+        "kothay achen",
+        "address",
+        "office address",
+        "where are you",
+        "apnader location",
+        "office kothay"
+      ],
+      "responses": [
+        "We operate remotely to serve clients nationwide. Visit our website: https://cftechlab.hcsarker.me/ for more details.",
+        "Amra remote-based, puro Bangladesh e service dei. Details: https://cftechlab.hcsarker.me/"
+      ]
+    },
+    {
+      "tag": "team",
+      "patterns": [
+        "who are you",
+        "team",
+        "apnara ke",
+        "founder",
+        "about your team",
+        "team members",
+        "developers"
+      ],
+      "responses": [
+        "CF TechLab is a team of experienced developers and IT professionals dedicated to delivering quality solutions. Led by innovative tech enthusiasts!",
+        "Amra experienced developers ebong IT professionals er team. Quality solution provide kora amader goal."
+      ]
+    },
+    {
+      "tag": "technologies",
+      "patterns": [
+        "what technologies",
+        "tech stack",
+        "programming languages",
+        "kon technology use koren",
+        "frameworks",
+        "tools",
+        "languages you use"
+      ],
+      "responses": [
+        "We work with: Python, JavaScript, React, Node.js, Flask, Django, TensorFlow, MongoDB, MySQL, Docker, AWS, and more!",
+        "Amra Python, JavaScript, React, Flask, Django, TensorFlow, MongoDB, MySQL ebong modern technologies use kori."
+      ]
+    },
+    {
+      "tag": "payment",
+      "patterns": [
+        "payment methods",
+        "kivabe payment korbo",
+        "payment process",
+        "how to pay",
+        "payment options",
+        "bkash",
+        "nagad",
+        "bank transfer"
+      ],
+      "responses": [
+        "We accept: 💳 Bkash, Nagad, Rocket 🏦 Bank Transfer 💰 Cash. Payment details will be shared after project confirmation.",
+        "Payment options: Bkash, Nagad, Rocket, Bank Transfer ebong Cash. Project confirm howar por details dewa hobe."
+      ]
+    },
+    {
+      "tag": "portfolio",
+      "patterns": [
+        "previous work",
+        "portfolio",
+        "examples",
+        "ager kaj",
+        "projects",
+        "your work",
+        "sample projects",
+        "case studies"
+      ],
+      "responses": [
+        "Check out our portfolio at https://cftechlab.hcsarker.me/ - We've delivered 50+ projects including e-commerce, dashboards, AI chatbots, and mobile apps!",
+        "Amader portfolio: https://cftechlab.hcsarker.me/ - 50+ projects complete korechi including websites, apps ebong AI solutions."
+      ]
+    },
+    {
+      "tag": "testimonials",
+      "patterns": [
+        "reviews",
+        "client feedback",
+        "testimonials",
+        "ki bole clients",
+        "ratings",
+        "customer reviews"
+      ],
+      "responses": [
+        "Our clients rate us 4.9/5! They appreciate our professionalism, timely delivery, and quality work. Visit our website for detailed reviews.",
+        "Amader clients der rating 4.9/5! Professional service ebong quality work er jonno amra porichiyo."
+      ]
+    },
+    {
+      "tag": "timeline",
+      "patterns": [
+        "how long",
+        "project duration",
+        "koto din lagbe",
+        "timeline",
+        "delivery time",
+        "when will it be done",
+        "koto time lagbe"
+      ],
+      "responses": [
+        "Project timeline depends on complexity. Simple websites: 7-10 days. Complex apps: 4-8 weeks. We provide detailed timeline estimates after requirements discussion.",
+        "Timeline project er upor depend kore. Simple website 7-10 din. Complex app 4-8 weeks. Requirements discuss korar por exact timeline debo."
+      ]
+    },
+    {
+      "tag": "support",
+      "patterns": [
+        "support",
+        "maintenance",
+        "after service",
+        "help",
+        "project er por ki korben",
+        "technical support",
+        "bug fix"
+      ],
+      "responses": [
+        "We provide 3 months free support after project delivery! This includes bug fixes, minor updates, and technical assistance.",
+        "Project delivery er por 3 months free support dei! Bug fix, minor updates ebong technical help included."
+      ]
+    },
+    {
+      "tag": "custom_project",
+      "patterns": [
+        "custom project",
+        "amar ekta idea ache",
+        "I have an idea",
+        "can you build",
+        "amader jonno banaben",
+        "custom solution",
+        "specific requirements"
+      ],
+      "responses": [
+        "Yes! We love working on custom projects. Share your requirements and we'll provide a detailed proposal with timeline and cost estimates.",
+        "Definitely! Apnar requirements share korun, amra detailed proposal, timeline ebong cost estimate debo."
       ]
     },
     {
@@ -62,11 +245,16 @@
         "bye",
         "goodbye",
         "thank you",
-        "see you"
+        "see you",
+        "thanks",
+        "dhonnobad",
+        "okay",
+        "thik ache"
       ],
       "responses": [
-        "Thank you! Have a great day!",
-        "Goodbye! We are always here to help."
+        "Thank you for contacting CF TechLab! Have a great day! 🚀",
+        "Goodbye! We're always here to help. Visit us at https://cftechlab.hcsarker.me/",
+        "Dhonnobad! Amra always available. Feel free to reach out anytime!"
       ]
     }
   ]

@@ -1,61 +1,454 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>CF TechLab Assistant</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CF TechLab AI Assistant</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary-color: #10b981;
+            --bg-light: #f8fafc;
+            --bg-dark: #0f172a;
+            --text-light: #1e293b;
+            --text-dark: #e2e8f0;
+            --bubble-user: #2563eb;
+            --bubble-bot: #475569;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
         body {
-            font-family: Arial;
-            margin: 30px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            transition: background 0.3s ease;
+        }
+
+        body.dark-mode {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 90vh;
+            max-height: 700px;
+            transition: background 0.3s ease;
+        }
+
+        body.dark-mode .container {
+            background: var(--bg-dark);
+            color: var(--text-dark);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .icon-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+            font-size: 18px;
+        }
+
+        .icon-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
 
         #chatbox {
-            width: 400px;
-            height: 400px;
-            border: 1px solid #ccc;
-            padding: 10px;
-            overflow-y: scroll;
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background: var(--bg-light);
+            transition: background 0.3s ease;
         }
 
-        .msg {
-            margin: 5px 0;
+        body.dark-mode #chatbox {
+            background: #1e293b;
         }
 
-        .you {
-            color: blue;
+        .message {
+            display: flex;
+            gap: 10px;
+            animation: slideIn 0.3s ease;
         }
 
-        .bot {
-            color: green;
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 12px 18px;
+            border-radius: 18px;
+            position: relative;
+            word-wrap: break-word;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .message.user .message-content {
+            background: var(--bubble-user);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message.bot .message-content {
+            background: white;
+            color: var(--text-light);
+            border-bottom-left-radius: 4px;
+        }
+
+        body.dark-mode .message.bot .message-content {
+            background: var(--bubble-bot);
+            color: var(--text-dark);
+        }
+
+        .timestamp {
+            font-size: 11px;
+            opacity: 0.7;
+            margin-top: 5px;
+        }
+
+        .typing-indicator {
+            display: none;
+            padding: 10px 15px;
+            background: white;
+            border-radius: 18px;
+            width: fit-content;
+        }
+
+        body.dark-mode .typing-indicator {
+            background: var(--bubble-bot);
+        }
+
+        .typing-indicator.active {
+            display: block;
+        }
+
+        .typing-indicator span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #94a3b8;
+            animation: bounce 1.4s infinite;
+        }
+
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes bounce {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .input-area {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            gap: 10px;
+            transition: background 0.3s ease;
+        }
+
+        body.dark-mode .input-area {
+            background: #1e293b;
+            border-top-color: #334155;
+        }
+
+        #msg {
+            flex: 1;
+            padding: 12px 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 25px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        body.dark-mode #msg {
+            background: #0f172a;
+            border-color: #334155;
+            color: var(--text-dark);
+        }
+
+        #msg:focus {
+            border-color: var(--primary-color);
+        }
+
+        #sendBtn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s, transform 0.2s;
+            font-size: 20px;
+        }
+
+        #sendBtn:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        #sendBtn:active {
+            transform: scale(0.95);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                height: 100vh;
+                max-height: 100vh;
+                border-radius: 0;
+            }
+
+            .header h1 {
+                font-size: 18px;
+            }
+
+            .message-content {
+                max-width: 85%;
+            }
+        }
+
+        /* Scrollbar Styling */
+        #chatbox::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #chatbox::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        #chatbox::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+
+        body.dark-mode #chatbox::-webkit-scrollbar-thumb {
+            background: #475569;
         }
     </style>
 </head>
 
 <body>
+    <div class="container">
+        <div class="header">
+            <h1>
+                <span>🤖</span>
+                CF TechLab AI Assistant
+            </h1>
+            <div class="header-actions">
+                <button class="icon-btn" onclick="toggleDarkMode()" title="Toggle Dark Mode">
+                    🌙
+                </button>
+                <button class="icon-btn" onclick="clearChat()" title="Clear Chat">
+                    🗑️
+                </button>
+            </div>
+        </div>
 
-    <h2>CF TechLab Live Chat</h2>
-    <div id="chatbox"></div>
+        <div id="chatbox">
+            <div class="message bot">
+                <div class="message-content">
+                    👋 Assalamualaikum! Welcome to CF TechLab. How can I help you today?
+                    <div class="timestamp" id="welcomeTime"></div>
+                </div>
+            </div>
+        </div>
 
-    <input id="msg" type="text" placeholder="Type message..." style="width:300px;">
-    <button onclick="sendMessage()">Send</button>
+        <div class="typing-indicator" id="typingIndicator">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="input-area">
+            <input type="text" id="msg" placeholder="Type your message..." autocomplete="off">
+            <button id="sendBtn" onclick="sendMessage()">📤</button>
+        </div>
+    </div>
 
     <script>
-        async function sendMessage() {
-            let text = document.getElementById("msg").value;
-            document.getElementById("chatbox").innerHTML += `<div class='msg you'><b>You:</b> ${text}</div>`;
+        // Initialize welcome timestamp
+        document.getElementById('welcomeTime').textContent = new Date().toLocaleTimeString('en-US', { 
+            hour: '2-digit', 
+            minute: '2-digit' 
+        });
 
-            let response = await fetch("/chat", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ message: text })
-            });
-
-            let data = await response.json();
-            document.getElementById("chatbox").innerHTML += `<div class='msg bot'><b>Bot:</b> ${data.reply}</div>`;
-            document.getElementById("msg").value = "";
+        // Dark mode toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
         }
-    </script>
 
+        // Load dark mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+        }
+
+        // Clear chat
+        function clearChat() {
+            const chatbox = document.getElementById('chatbox');
+            chatbox.innerHTML = `
+                <div class="message bot">
+                    <div class="message-content">
+                        👋 Chat cleared! How can I help you?
+                        <div class="timestamp">${new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Auto-scroll to bottom
+        function scrollToBottom() {
+            const chatbox = document.getElementById('chatbox');
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+
+        // Send message function
+        async function sendMessage() {
+            const input = document.getElementById('msg');
+            const text = input.value.trim();
+            
+            if (!text) return;
+
+            const chatbox = document.getElementById('chatbox');
+            const timestamp = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user';
+            userMsg.innerHTML = `
+                <div class="message-content">
+                    ${text}
+                    <div class="timestamp">${timestamp}</div>
+                </div>
+            `;
+            chatbox.appendChild(userMsg);
+            input.value = '';
+            scrollToBottom();
+
+            // Show typing indicator
+            const typingIndicator = document.getElementById('typingIndicator');
+            typingIndicator.classList.add('active');
+
+            try {
+                const response = await fetch('/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: text })
+                });
+
+                const data = await response.json();
+                
+                // Simulate typing delay
+                setTimeout(() => {
+                    typingIndicator.classList.remove('active');
+                    
+                    const botMsg = document.createElement('div');
+                    botMsg.className = 'message bot';
+                    botMsg.innerHTML = `
+                        <div class="message-content">
+                            ${data.reply}
+                            <div class="timestamp">${new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}</div>
+                        </div>
+                    `;
+                    chatbox.appendChild(botMsg);
+                    scrollToBottom();
+                }, 800);
+
+            } catch (error) {
+                typingIndicator.classList.remove('active');
+                alert('Error connecting to server. Please try again.');
+            }
+        }
+
+        // Enter key support
+        document.getElementById('msg').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Initial scroll
+        scrollToBottom();
+    </script>
 </body>
 
 </html>
