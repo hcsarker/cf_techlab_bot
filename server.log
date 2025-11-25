@@ -1,0 +1,34 @@
+2025-11-26 00:56:23.450175: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-11-26 00:56:23,557 - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-11-26 00:56:23,574 - INFO - Model and data loaded successfully
+✅ Database initialized successfully!
+ * Serving Flask app 'app'
+ * Debug mode: off
+2025-11-26 00:56:23,578 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.112:5000
+2025-11-26 00:56:23,578 - INFO - [33mPress CTRL+C to quit[0m
+2025-11-26 00:56:35,224 - INFO - 127.0.0.1 - - [26/Nov/2025 00:56:35] "GET /health HTTP/1.1" 200 -
+2025-11-26 00:56:51,677 - INFO - 127.0.0.1 - - [26/Nov/2025 00:56:51] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 00:56:51,678 - INFO - 127.0.0.1 - - [26/Nov/2025 00:56:51] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 00:57:17,265 - INFO - 127.0.0.1 - - [26/Nov/2025 00:57:17] "[36mGET / HTTP/1.1[0m" 304 -
+2025-11-26 00:57:18,449 - INFO - 127.0.0.1 - - [26/Nov/2025 00:57:18] "[36mGET / HTTP/1.1[0m" 304 -
+2025-11-26 00:57:35,193 - INFO - 127.0.0.1 - - [26/Nov/2025 00:57:35] "[36mGET / HTTP/1.1[0m" 304 -
+2025-11-26 00:57:51,916 - INFO - 127.0.0.1 - - [26/Nov/2025 00:57:51] "[36mGET / HTTP/1.1[0m" 304 -
+2025-11-26 00:57:52,667 - INFO - 127.0.0.1 - - [26/Nov/2025 00:57:52] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 00:57:52,668 - INFO - 127.0.0.1 - - [26/Nov/2025 00:57:52] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 00:58:20,673 - INFO - 127.0.0.1 - - [26/Nov/2025 00:58:20] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 00:58:20,674 - INFO - 127.0.0.1 - - [26/Nov/2025 00:58:20] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 00:58:50,664 - INFO - 127.0.0.1 - - [26/Nov/2025 00:58:50] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 00:58:50,665 - INFO - 127.0.0.1 - - [26/Nov/2025 00:58:50] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 00:59:21,053 - INFO - Received message: hello
+2025-11-26 00:59:21,332 - INFO - Predicted tag: greeting, Confidence: 1.00
+2025-11-26 00:59:21,334 - INFO - 127.0.0.1 - - [26/Nov/2025 00:59:21] "POST /chat HTTP/1.1" 200 -
+2025-11-26 00:59:31,735 - INFO - 127.0.0.1 - - [26/Nov/2025 00:59:31] "GET / HTTP/1.1" 200 -
+2025-11-26 00:59:51,411 - INFO - 127.0.0.1 - - [26/Nov/2025 00:59:51] "GET / HTTP/1.1" 200 -
+2025-11-26 00:59:51,654 - INFO - 127.0.0.1 - - [26/Nov/2025 00:59:51] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-26 00:59:51,662 - INFO - 127.0.0.1 - - [26/Nov/2025 00:59:51] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 00:59:51,662 - INFO - 127.0.0.1 - - [26/Nov/2025 00:59:51] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 00:59:58,513 - INFO - 127.0.0.1 - - [26/Nov/2025 00:59:58] "GET / HTTP/1.1" 200 -
+2025-11-26 00:59:58,715 - INFO - 127.0.0.1 - - [26/Nov/2025 00:59:58] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -

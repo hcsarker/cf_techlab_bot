@@ -4,15 +4,20 @@ A modern, AI-powered chatbot built with Flask and TensorFlow for CF TechLab. Fea
 
 ## 🌟 Features
 
-- **Smart AI Chatbot**: TensorFlow/Keras-based intent classification with 99%+ accuracy
+- **Smart AI Chatbot**: TensorFlow/Keras-based intent classification with 99.5%+ accuracy
+- **860+ Training Patterns**: Comprehensive multilingual dataset covering all business queries
 - **Modern UI**: Responsive chat interface with message bubbles, timestamps, and smooth animations
 - **Dark Mode**: Toggle between light and dark themes with preference persistence
 - **Multilingual**: Supports both English and Bangla (Banglish) queries
+- **User Feedback System** 👍👎: Rate responses to improve the bot
+- **Admin Dashboard** 🎛️: Monitor performance, review feedback, and export training data
+- **Conversation Logging**: SQLite database tracking all interactions
+- **Auto-learning Ready**: Export new patterns from user feedback for continuous improvement
 - **Real-time Typing Indicator**: Shows when the bot is "thinking"
 - **Confidence Threshold**: Falls back to helpful suggestions for unclear queries
 - **CORS Enabled**: Can be integrated with external applications
 - **Health Check Endpoint**: Monitor server status
-- **Logging**: Comprehensive logging for debugging and analytics
+- **Comprehensive Logging**: Track all interactions for analytics
 - **Mobile Responsive**: Works perfectly on all device sizes
 
 ## 📋 Prerequisites
@@ -102,9 +107,40 @@ curl -X POST http://127.0.0.1:5000/chat \
 {
   "reply": "Assalamualaikum! How may I help you?",
   "confidence": 0.9968,
-  "tag": "greeting"
+  "tag": "greeting",
+  "conversation_id": 1
 }
 ```
+
+### Feedback System
+
+**Submit User Feedback**
+
+- **POST** `/feedback`
+
+```bash
+curl -X POST http://127.0.0.1:5000/feedback \
+  -H "Content-Type: application/json" \
+  -d '{"conversation_id": 1, "feedback_type": "positive"}'
+```
+
+**Admin Dashboard**
+
+- **GET** `/admin` - Visual dashboard with statistics
+- **GET** `/admin/stats` - Get performance metrics
+- **GET** `/admin/low-confidence` - Review uncertain responses
+- **GET** `/admin/negative-feedback` - See user complaints
+- **GET** `/admin/export` - Export training data
+
+```bash
+# Access dashboard
+http://127.0.0.1:5000/admin
+
+# Get statistics via API
+curl http://127.0.0.1:5000/admin/stats
+```
+
+📖 **Full Documentation**: See [FEEDBACK_SYSTEM.md](FEEDBACK_SYSTEM.md) for detailed guide on using the feedback system, admin dashboard, and retraining workflow.
 
 ## 🎨 Chatbot Capabilities
 

@@ -59,3 +59,165 @@
 2025-11-26 00:28:54,162 - INFO - Predicted tag: greeting, Confidence: 0.50
 2025-11-26 00:28:54,162 - WARNING - Low confidence (0.50) for message: emergency support ache?
 2025-11-26 00:28:54,162 - INFO - 127.0.0.1 - - [26/Nov/2025 00:28:54] "POST /chat HTTP/1.1" 200 -
+2025-11-26 00:47:45,973 - INFO - 127.0.0.1 - - [26/Nov/2025 00:47:45] "GET / HTTP/1.1" 200 -
+2025-11-26 00:48:04,969 - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-11-26 00:48:04,992 - INFO - Model and data loaded successfully
+2025-11-26 00:48:04,999 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.112:5000
+2025-11-26 00:48:04,999 - INFO - [33mPress CTRL+C to quit[0m
+2025-11-26 00:48:43,828 - INFO - 127.0.0.1 - - [26/Nov/2025 00:48:43] "GET /health HTTP/1.1" 200 -
+2025-11-26 00:48:59,428 - INFO - Received message: hello
+2025-11-26 00:48:59,884 - INFO - Predicted tag: greeting, Confidence: 1.00
+2025-11-26 00:48:59,895 - INFO - 127.0.0.1 - - [26/Nov/2025 00:48:59] "POST /chat HTTP/1.1" 200 -
+2025-11-26 00:49:08,303 - INFO - Feedback received: positive for conversation 1
+2025-11-26 00:49:08,304 - INFO - 127.0.0.1 - - [26/Nov/2025 00:49:08] "POST /feedback HTTP/1.1" 200 -
+2025-11-26 00:49:16,550 - INFO - Received message: xyz random stuff
+2025-11-26 00:49:16,686 - INFO - Predicted tag: technologies, Confidence: 1.00
+2025-11-26 00:49:16,697 - INFO - 127.0.0.1 - - [26/Nov/2025 00:49:16] "POST /chat HTTP/1.1" 200 -
+2025-11-26 00:49:21,392 - INFO - 127.0.0.1 - - [26/Nov/2025 00:49:21] "[36mGET / HTTP/1.1[0m" 304 -
+2025-11-26 00:49:31,847 - INFO - Feedback received: negative for conversation 2
+2025-11-26 00:49:31,848 - INFO - 127.0.0.1 - - [26/Nov/2025 00:49:31] "POST /feedback HTTP/1.1" 200 -
+2025-11-26 00:49:40,337 - INFO - 127.0.0.1 - - [26/Nov/2025 00:49:40] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 00:49:47,322 - INFO - 127.0.0.1 - - [26/Nov/2025 00:49:47] "GET /admin/negative-feedback HTTP/1.1" 200 -
+2025-11-26 00:50:14,213 - INFO - Received message: apnader service ki
+2025-11-26 00:50:14,348 - INFO - Predicted tag: services, Confidence: 1.00
+2025-11-26 00:50:14,359 - INFO - 127.0.0.1 - - [26/Nov/2025 00:50:14] "POST /chat HTTP/1.1" 200 -
+2025-11-26 00:50:14,377 - INFO - Received message: price koto
+2025-11-26 00:50:14,550 - INFO - Predicted tag: pricing, Confidence: 1.00
+2025-11-26 00:50:14,562 - INFO - 127.0.0.1 - - [26/Nov/2025 00:50:14] "POST /chat HTTP/1.1" 200 -
+2025-11-26 00:52:19,090 - INFO - 127.0.0.1 - - [26/Nov/2025 00:52:19] "GET /admin HTTP/1.1" 200 -
+2025-11-26 00:52:19,714 - INFO - 127.0.0.1 - - [26/Nov/2025 00:52:19] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 00:52:19,714 - INFO - 127.0.0.1 - - [26/Nov/2025 00:52:19] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 00:52:49,716 - INFO - 127.0.0.1 - - [26/Nov/2025 00:52:49] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 00:52:49,717 - INFO - 127.0.0.1 - - [26/Nov/2025 00:52:49] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 00:53:19,716 - INFO - 127.0.0.1 - - [26/Nov/2025 00:53:19] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 00:53:19,717 - INFO - 127.0.0.1 - - [26/Nov/2025 00:53:19] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 00:53:47,782 - INFO - 127.0.0.1 - - [26/Nov/2025 00:53:47] "GET /admin/export HTTP/1.1" 200 -
+2025-11-26 00:53:54,164 - INFO - 127.0.0.1 - - [26/Nov/2025 00:53:54] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 00:53:54,165 - INFO - 127.0.0.1 - - [26/Nov/2025 00:53:54] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 00:54:19,716 - INFO - 127.0.0.1 - - [26/Nov/2025 00:54:19] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 00:54:19,717 - INFO - 127.0.0.1 - - [26/Nov/2025 00:54:19] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 00:54:28,164 - INFO - 127.0.0.1 - - [26/Nov/2025 00:54:28] "GET / HTTP/1.1" 200 -
+2025-11-26 00:54:50,663 - INFO - 127.0.0.1 - - [26/Nov/2025 00:54:50] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 00:54:50,664 - INFO - 127.0.0.1 - - [26/Nov/2025 00:54:50] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 00:55:20,664 - INFO - 127.0.0.1 - - [26/Nov/2025 00:55:20] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 00:55:20,666 - INFO - 127.0.0.1 - - [26/Nov/2025 00:55:20] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 00:55:50,664 - INFO - 127.0.0.1 - - [26/Nov/2025 00:55:50] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 00:55:50,665 - INFO - 127.0.0.1 - - [26/Nov/2025 00:55:50] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 00:56:23,557 - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-11-26 00:56:23,574 - INFO - Model and data loaded successfully
+2025-11-26 00:56:23,578 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.112:5000
+2025-11-26 00:56:23,578 - INFO - [33mPress CTRL+C to quit[0m
+2025-11-26 00:56:35,224 - INFO - 127.0.0.1 - - [26/Nov/2025 00:56:35] "GET /health HTTP/1.1" 200 -
+2025-11-26 00:56:51,677 - INFO - 127.0.0.1 - - [26/Nov/2025 00:56:51] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 00:56:51,678 - INFO - 127.0.0.1 - - [26/Nov/2025 00:56:51] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 00:57:17,265 - INFO - 127.0.0.1 - - [26/Nov/2025 00:57:17] "[36mGET / HTTP/1.1[0m" 304 -
+2025-11-26 00:57:18,449 - INFO - 127.0.0.1 - - [26/Nov/2025 00:57:18] "[36mGET / HTTP/1.1[0m" 304 -
+2025-11-26 00:57:35,193 - INFO - 127.0.0.1 - - [26/Nov/2025 00:57:35] "[36mGET / HTTP/1.1[0m" 304 -
+2025-11-26 00:57:51,916 - INFO - 127.0.0.1 - - [26/Nov/2025 00:57:51] "[36mGET / HTTP/1.1[0m" 304 -
+2025-11-26 00:57:52,667 - INFO - 127.0.0.1 - - [26/Nov/2025 00:57:52] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 00:57:52,668 - INFO - 127.0.0.1 - - [26/Nov/2025 00:57:52] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 00:58:20,673 - INFO - 127.0.0.1 - - [26/Nov/2025 00:58:20] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 00:58:20,674 - INFO - 127.0.0.1 - - [26/Nov/2025 00:58:20] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 00:58:50,664 - INFO - 127.0.0.1 - - [26/Nov/2025 00:58:50] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 00:58:50,665 - INFO - 127.0.0.1 - - [26/Nov/2025 00:58:50] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 00:59:21,053 - INFO - Received message: hello
+2025-11-26 00:59:21,332 - INFO - Predicted tag: greeting, Confidence: 1.00
+2025-11-26 00:59:21,334 - INFO - 127.0.0.1 - - [26/Nov/2025 00:59:21] "POST /chat HTTP/1.1" 200 -
+2025-11-26 00:59:31,735 - INFO - 127.0.0.1 - - [26/Nov/2025 00:59:31] "GET / HTTP/1.1" 200 -
+2025-11-26 00:59:51,411 - INFO - 127.0.0.1 - - [26/Nov/2025 00:59:51] "GET / HTTP/1.1" 200 -
+2025-11-26 00:59:51,654 - INFO - 127.0.0.1 - - [26/Nov/2025 00:59:51] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-26 00:59:51,662 - INFO - 127.0.0.1 - - [26/Nov/2025 00:59:51] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 00:59:51,662 - INFO - 127.0.0.1 - - [26/Nov/2025 00:59:51] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 00:59:58,513 - INFO - 127.0.0.1 - - [26/Nov/2025 00:59:58] "GET / HTTP/1.1" 200 -
+2025-11-26 00:59:58,715 - INFO - 127.0.0.1 - - [26/Nov/2025 00:59:58] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-26 01:00:34,851 - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-11-26 01:00:34,865 - INFO - Model and data loaded successfully
+2025-11-26 01:01:00,393 - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-11-26 01:01:00,407 - INFO - Model and data loaded successfully
+2025-11-26 01:01:00,412 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.112:5000
+2025-11-26 01:01:00,412 - INFO - [33mPress CTRL+C to quit[0m
+2025-11-26 01:01:04,431 - INFO - 127.0.0.1 - - [26/Nov/2025 01:01:04] "[36mGET / HTTP/1.1[0m" 304 -
+2025-11-26 01:01:20,824 - INFO - 127.0.0.1 - - [26/Nov/2025 01:01:20] "GET / HTTP/1.1" 200 -
+2025-11-26 01:01:21,065 - INFO - 127.0.0.1 - - [26/Nov/2025 01:01:21] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-26 01:01:21,194 - INFO - 127.0.0.1 - - [26/Nov/2025 01:01:21] "GET / HTTP/1.1" 200 -
+2025-11-26 01:01:21,393 - INFO - 127.0.0.1 - - [26/Nov/2025 01:01:21] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-26 01:01:21,468 - INFO - 127.0.0.1 - - [26/Nov/2025 01:01:21] "GET / HTTP/1.1" 200 -
+2025-11-26 01:01:21,684 - INFO - 127.0.0.1 - - [26/Nov/2025 01:01:21] "GET / HTTP/1.1" 200 -
+2025-11-26 01:01:21,929 - INFO - 127.0.0.1 - - [26/Nov/2025 01:01:21] "GET / HTTP/1.1" 200 -
+2025-11-26 01:01:22,148 - INFO - 127.0.0.1 - - [26/Nov/2025 01:01:22] "GET / HTTP/1.1" 200 -
+2025-11-26 01:01:22,383 - INFO - 127.0.0.1 - - [26/Nov/2025 01:01:22] "GET / HTTP/1.1" 200 -
+2025-11-26 01:01:22,456 - INFO - 127.0.0.1 - - [26/Nov/2025 01:01:22] "GET / HTTP/1.1" 200 -
+2025-11-26 01:01:22,457 - INFO - 127.0.0.1 - - [26/Nov/2025 01:01:22] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-26 01:01:22,637 - INFO - 127.0.0.1 - - [26/Nov/2025 01:01:22] "GET / HTTP/1.1" 200 -
+2025-11-26 01:01:22,943 - INFO - 127.0.0.1 - - [26/Nov/2025 01:01:22] "GET / HTTP/1.1" 200 -
+2025-11-26 01:01:23,193 - INFO - 127.0.0.1 - - [26/Nov/2025 01:01:23] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-26 01:01:52,670 - INFO - 127.0.0.1 - - [26/Nov/2025 01:01:52] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 01:01:52,671 - INFO - 127.0.0.1 - - [26/Nov/2025 01:01:52] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 01:02:39,163 - INFO - 127.0.0.1 - - [26/Nov/2025 01:02:39] "GET / HTTP/1.1" 200 -
+2025-11-26 01:02:52,675 - INFO - 127.0.0.1 - - [26/Nov/2025 01:02:52] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 01:02:52,678 - INFO - 127.0.0.1 - - [26/Nov/2025 01:02:52] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 01:03:08,526 - INFO - 127.0.0.1 - - [26/Nov/2025 01:03:08] "GET / HTTP/1.1" 200 -
+2025-11-26 01:03:29,935 - INFO - 127.0.0.1 - - [26/Nov/2025 01:03:29] "GET / HTTP/1.1" 200 -
+2025-11-26 01:03:30,430 - INFO - 127.0.0.1 - - [26/Nov/2025 01:03:30] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-26 01:03:33,154 - INFO - Received message: hi
+2025-11-26 01:03:33,384 - INFO - Predicted tag: greeting, Confidence: 1.00
+2025-11-26 01:03:33,397 - INFO - 127.0.0.1 - - [26/Nov/2025 01:03:33] "POST /chat HTTP/1.1" 200 -
+2025-11-26 01:03:41,007 - INFO - Received message: yes
+2025-11-26 01:03:41,104 - INFO - Predicted tag: technologies, Confidence: 1.00
+2025-11-26 01:03:41,115 - INFO - 127.0.0.1 - - [26/Nov/2025 01:03:41] "POST /chat HTTP/1.1" 200 -
+2025-11-26 01:03:52,664 - INFO - 127.0.0.1 - - [26/Nov/2025 01:03:52] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 01:03:52,666 - INFO - 127.0.0.1 - - [26/Nov/2025 01:03:52] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 01:04:01,220 - INFO - Received message: amar custom support chai
+2025-11-26 01:04:01,322 - INFO - Predicted tag: custom_project, Confidence: 0.99
+2025-11-26 01:04:01,334 - INFO - 127.0.0.1 - - [26/Nov/2025 01:04:01] "POST /chat HTTP/1.1" 200 -
+2025-11-26 01:04:23,286 - INFO - Received message: one to one kotha bola dorkar
+2025-11-26 01:04:23,391 - INFO - Predicted tag: custom_project, Confidence: 0.82
+2025-11-26 01:04:23,403 - INFO - 127.0.0.1 - - [26/Nov/2025 01:04:23] "POST /chat HTTP/1.1" 200 -
+2025-11-26 01:04:46,998 - INFO - Received message: consultation dorkar
+2025-11-26 01:04:47,090 - INFO - Predicted tag: custom_project, Confidence: 0.99
+2025-11-26 01:04:47,101 - INFO - 127.0.0.1 - - [26/Nov/2025 01:04:47] "POST /chat HTTP/1.1" 200 -
+2025-11-26 01:04:52,662 - INFO - 127.0.0.1 - - [26/Nov/2025 01:04:52] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 01:04:52,663 - INFO - 127.0.0.1 - - [26/Nov/2025 01:04:52] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 01:05:08,266 - INFO - Received message: ekta meeting fixed koren
+2025-11-26 01:05:08,370 - INFO - Predicted tag: custom_project, Confidence: 0.99
+2025-11-26 01:05:08,382 - INFO - 127.0.0.1 - - [26/Nov/2025 01:05:08] "POST /chat HTTP/1.1" 200 -
+2025-11-26 01:05:52,670 - INFO - 127.0.0.1 - - [26/Nov/2025 01:05:52] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 01:05:52,672 - INFO - 127.0.0.1 - - [26/Nov/2025 01:05:52] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 01:06:52,670 - INFO - 127.0.0.1 - - [26/Nov/2025 01:06:52] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 01:06:52,673 - INFO - 127.0.0.1 - - [26/Nov/2025 01:06:52] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 01:07:33,676 - INFO - Feedback received: positive for conversation 10
+2025-11-26 01:07:33,676 - INFO - 127.0.0.1 - - [26/Nov/2025 01:07:33] "POST /feedback HTTP/1.1" 200 -
+2025-11-26 01:07:35,060 - INFO - Feedback received: positive for conversation 11
+2025-11-26 01:07:35,060 - INFO - 127.0.0.1 - - [26/Nov/2025 01:07:35] "POST /feedback HTTP/1.1" 200 -
+2025-11-26 01:07:43,537 - INFO - Feedback received: positive for conversation 7
+2025-11-26 01:07:43,537 - INFO - 127.0.0.1 - - [26/Nov/2025 01:07:43] "POST /feedback HTTP/1.1" 200 -
+2025-11-26 01:07:52,663 - INFO - 127.0.0.1 - - [26/Nov/2025 01:07:52] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 01:07:52,664 - INFO - 127.0.0.1 - - [26/Nov/2025 01:07:52] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 01:07:55,326 - INFO - 127.0.0.1 - - [26/Nov/2025 01:07:55] "GET /admin HTTP/1.1" 200 -
+2025-11-26 01:07:55,918 - INFO - 127.0.0.1 - - [26/Nov/2025 01:07:55] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 01:07:55,930 - INFO - 127.0.0.1 - - [26/Nov/2025 01:07:55] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 01:08:03,260 - INFO - 127.0.0.1 - - [26/Nov/2025 01:08:03] "GET /admin/negative-feedback HTTP/1.1" 200 -
+2025-11-26 01:08:15,212 - INFO - 127.0.0.1 - - [26/Nov/2025 01:08:15] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 01:08:25,922 - INFO - 127.0.0.1 - - [26/Nov/2025 01:08:25] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 01:08:25,924 - INFO - 127.0.0.1 - - [26/Nov/2025 01:08:25] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 01:08:56,663 - INFO - 127.0.0.1 - - [26/Nov/2025 01:08:56] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 01:08:56,664 - INFO - 127.0.0.1 - - [26/Nov/2025 01:08:56] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 01:09:26,665 - INFO - 127.0.0.1 - - [26/Nov/2025 01:09:26] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 01:09:26,665 - INFO - 127.0.0.1 - - [26/Nov/2025 01:09:26] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 01:09:56,661 - INFO - 127.0.0.1 - - [26/Nov/2025 01:09:56] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 01:09:56,662 - INFO - 127.0.0.1 - - [26/Nov/2025 01:09:56] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 01:10:26,663 - INFO - 127.0.0.1 - - [26/Nov/2025 01:10:26] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 01:10:26,664 - INFO - 127.0.0.1 - - [26/Nov/2025 01:10:26] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 01:10:56,665 - INFO - 127.0.0.1 - - [26/Nov/2025 01:10:56] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 01:10:56,666 - INFO - 127.0.0.1 - - [26/Nov/2025 01:10:56] "GET /admin/low-confidence HTTP/1.1" 200 -
+2025-11-26 01:11:26,663 - INFO - 127.0.0.1 - - [26/Nov/2025 01:11:26] "GET /admin/stats HTTP/1.1" 200 -
+2025-11-26 01:11:26,664 - INFO - 127.0.0.1 - - [26/Nov/2025 01:11:26] "GET /admin/low-confidence HTTP/1.1" 200 -

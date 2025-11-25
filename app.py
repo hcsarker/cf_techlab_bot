@@ -1,4 +1,9 @@
-from flask import Flask, request, jsonify, send_from_directory
+import os
+# Suppress TensorFlow warnings
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # 0=all, 1=info, 2=warning, 3=error
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'  # Disable oneDNN messages
+
+from flask import Flask, request, jsonify, send_from_directory, render_template_string
 from flask_cors import CORS
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
@@ -8,6 +13,7 @@ import json
 import random
 import logging
 from datetime import datetime
+import database
 
 # Configure logging
 logging.basicConfig(
@@ -21,6 +27,9 @@ logging.basicConfig(
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
+
+# Initialize database
+database.init_db()
 
 # Load model and data
 try:
@@ -89,10 +98,21 @@ def chat():
             if not response:
                 response = "Sorry, I didn't understand that. Please try asking about our services, pricing, or contact information."
         
+        # Log conversation to database
+        conversation_id = database.log_conversation(
+            user_message=msg,
+            bot_response=response,
+            intent_tag=tag,
+            confidence=float(confidence),
+            session_id=request.headers.get('User-Agent', 'unknown')[:100],
+            ip_address=request.remote_addr
+        )
+        
         return jsonify({
             'reply': response,
             'confidence': float(confidence),
-            'tag': tag
+            'tag': tag,
+            'conversation_id': conversation_id
         })
     
     except Exception as e:
@@ -101,6 +121,76 @@ def chat():
             'error': 'Internal server error',
             'reply': 'Sorry, something went wrong. Please try again.'
         }), 500
+
+@app.route('/feedback', methods=['POST'])
+def feedback():
+    """Handle user feedback on bot responses"""
+    try:
+        if not request.json or 'conversation_id' not in request.json or 'feedback_type' not in request.json:
+            return jsonify({'error': 'Invalid request format'}), 400
+        
+        conversation_id = request.json['conversation_id']
+        feedback_type = request.json['feedback_type']
+        
+        if feedback_type not in ['positive', 'negative']:
+            return jsonify({'error': 'Invalid feedback type'}), 400
+        
+        database.add_feedback(conversation_id, feedback_type)
+        logging.info(f"Feedback received: {feedback_type} for conversation {conversation_id}")
+        
+        return jsonify({'success': True, 'message': 'Feedback recorded'})
+    
+    except Exception as e:
+        logging.error(f"Error processing feedback: {str(e)}")
+        return jsonify({'error': 'Internal server error'}), 500
+
+@app.route('/admin/stats', methods=['GET'])
+def admin_stats():
+    """Get statistics for admin dashboard"""
+    try:
+        stats = database.get_statistics()
+        return jsonify(stats)
+    except Exception as e:
+        logging.error(f"Error getting stats: {str(e)}")
+        return jsonify({'error': 'Internal server error'}), 500
+
+@app.route('/admin/low-confidence', methods=['GET'])
+def admin_low_confidence():
+    """Get conversations with low confidence"""
+    try:
+        threshold = float(request.args.get('threshold', 0.7))
+        limit = int(request.args.get('limit', 50))
+        conversations = database.get_low_confidence_conversations(threshold, limit)
+        return jsonify(conversations)
+    except Exception as e:
+        logging.error(f"Error getting low confidence conversations: {str(e)}")
+        return jsonify({'error': 'Internal server error'}), 500
+
+@app.route('/admin/negative-feedback', methods=['GET'])
+def admin_negative_feedback():
+    """Get conversations with negative feedback"""
+    try:
+        limit = int(request.args.get('limit', 50))
+        conversations = database.get_negative_feedback_conversations(limit)
+        return jsonify(conversations)
+    except Exception as e:
+        logging.error(f"Error getting negative feedback: {str(e)}")
+        return jsonify({'error': 'Internal server error'}), 500
+
+@app.route('/admin/export', methods=['GET'])
+def admin_export():
+    """Export training data from positive feedback"""
+    try:
+        training_data = database.export_training_data()
+        return jsonify(training_data)
+    except Exception as e:
+        logging.error(f"Error exporting training data: {str(e)}")
+        return jsonify({'error': 'Internal server error'}), 500
+
+@app.route('/admin', methods=['GET'])
+def admin_dashboard():
+    """Admin dashboard to review feedback and low confidence conversations"""
+    return send_from_directory('static', 'admin.html')
 
 @app.errorhandler(404)
 def not_found(error):

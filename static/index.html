@@ -169,6 +169,51 @@
             margin-top: 5px;
         }
 
+        .feedback-buttons {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .feedback-btn {
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 4px 12px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .feedback-btn:hover {
+            background: rgba(0, 0, 0, 0.1);
+            transform: scale(1.05);
+        }
+
+        .feedback-btn.selected {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .feedback-btn.negative.selected {
+            background: #ef4444;
+            border-color: #ef4444;
+        }
+
+        body.dark-mode .feedback-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: var(--text-dark);
+        }
+
+        body.dark-mode .feedback-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
         .typing-indicator {
             display: none;
             padding: 10px 15px;
@@ -427,6 +472,14 @@
                         <div class="message-content">
                             ${data.reply}
                             <div class="timestamp">${new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}</div>
+                            <div class="feedback-buttons">
+                                <button class="feedback-btn" onclick="sendFeedback(${data.conversation_id}, 'positive', this)">
+                                    👍 Helpful
+                                </button>
+                                <button class="feedback-btn negative" onclick="sendFeedback(${data.conversation_id}, 'negative', this)">
+                                    👎 Not Helpful
+                                </button>
+                            </div>
                         </div>
                     `;
                     chatbox.appendChild(botMsg);
@@ -436,6 +489,33 @@
             } catch (error) {
                 typingIndicator.classList.remove('active');
                 alert('Error connecting to server. Please try again.');
+            }
+        }
+
+        // Send feedback function
+        async function sendFeedback(conversationId, feedbackType, button) {
+            try {
+                const response = await fetch('/feedback', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        conversation_id: conversationId, 
+                        feedback_type: feedbackType 
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Mark button as selected
+                    button.classList.add('selected');
+                    // Disable both buttons in this feedback group
+                    const buttons = button.parentElement.querySelectorAll('.feedback-btn');
+                    buttons.forEach(btn => btn.disabled = true);
+                    buttons.forEach(btn => btn.style.cursor = 'not-allowed');
+                }
+            } catch (error) {
+                console.error('Feedback error:', error);
             }
         }
 
