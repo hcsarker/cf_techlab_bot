@@ -541,3 +541,108 @@
 2025-11-26 03:02:21,446 - INFO - [33mPress CTRL+C to quit[0m
 2025-11-26 03:02:39,922 - INFO - 127.0.0.1 - - [26/Nov/2025 03:02:39] "[36mGET / HTTP/1.1[0m" 304 -
 2025-11-26 03:02:54,564 - INFO - 127.0.0.1 - - [26/Nov/2025 03:02:54] "GET /widget?id=7a0e3752-a36a-43c2-9d21-033e8fbe3a68&vscodeBrowserReqId=1764104574554 HTTP/1.1" 200 -
+2025-11-26 03:04:33,778 - INFO - 127.0.0.1 - - [26/Nov/2025 03:04:33] "GET /widget HTTP/1.1" 200 -
+2025-11-26 03:04:48,218 - INFO - User info saved: Hridoy - 01642948324 - Session: session_1764104688202_jg2zyijv0
+2025-11-26 03:04:48,219 - INFO - 127.0.0.1 - - [26/Nov/2025 03:04:48] "POST /user-info HTTP/1.1" 200 -
+2025-11-26 03:04:52,874 - INFO - Received message: hi
+2025-11-26 03:04:53,078 - INFO - Predicted tag: greeting, Confidence: 1.00
+2025-11-26 03:04:53,089 - INFO - 127.0.0.1 - - [26/Nov/2025 03:04:53] "POST /chat HTTP/1.1" 200 -
+2025-11-26 03:05:10,711 - INFO - Received message: which service you provide
+2025-11-26 03:05:10,778 - INFO - Predicted tag: services, Confidence: 1.00
+2025-11-26 03:05:10,790 - INFO - 127.0.0.1 - - [26/Nov/2025 03:05:10] "POST /chat HTTP/1.1" 200 -
+2025-11-26 03:06:57,140 - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-11-26 03:06:57,158 - INFO - Model and data loaded successfully
+2025-11-26 03:06:57,164 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.112:5000
+2025-11-26 03:06:57,164 - INFO - [33mPress CTRL+C to quit[0m
+2025-11-26 03:07:12,911 - INFO - 127.0.0.1 - - [26/Nov/2025 03:07:12] "GET /health HTTP/1.1" 200 -
+2025-11-26 03:07:19,304 - INFO - 127.0.0.1 - - [26/Nov/2025 03:07:19] "GET /widget?id=2efe39e1-0f3b-4e26-b82d-e29ceed1fabe&vscodeBrowserReqId=1764104839277 HTTP/1.1" 200 -
+2025-11-26 03:07:42,260 - INFO - User info saved: y - 01642834424 - Session: session_1764104862243_ogo15zlfu
+2025-11-26 03:07:42,261 - INFO - 127.0.0.1 - - [26/Nov/2025 03:07:42] "POST /user-info HTTP/1.1" 200 -
+2025-11-26 03:07:47,050 - INFO - Received message: hi
+2025-11-26 03:07:47,248 - INFO - Predicted tag: greeting, Confidence: 1.00
+2025-11-26 03:07:47,259 - INFO - 127.0.0.1 - - [26/Nov/2025 03:07:47] "POST /chat HTTP/1.1" 200 -
+2025-11-26 03:07:50,277 - INFO - Received message: osr
+2025-11-26 03:07:50,344 - INFO - Predicted tag: technologies, Confidence: 1.00
+2025-11-26 03:07:50,490 - INFO - 127.0.0.1 - - [26/Nov/2025 03:07:50] "POST /chat HTTP/1.1" 200 -
+2025-11-26 03:08:31,692 - INFO - 127.0.0.1 - - [26/Nov/2025 03:08:31] "GET /widget?id=2efe39e1-0f3b-4e26-b82d-e29ceed1fabe&vscodeBrowserReqId=1764104911686 HTTP/1.1" 200 -
+2025-11-26 03:09:30,862 - INFO - 127.0.0.1 - - [26/Nov/2025 03:09:30] "GET /widget?id=2efe39e1-0f3b-4e26-b82d-e29ceed1fabe&vscodeBrowserReqId=1764104970851 HTTP/1.1" 200 -
+2025-11-26 03:09:32,935 - INFO - 127.0.0.1 - - [26/Nov/2025 03:09:32] "GET /widget?id=2efe39e1-0f3b-4e26-b82d-e29ceed1fabe&vscodeBrowserReqId=1764104972927 HTTP/1.1" 200 -
+2025-11-26 03:09:45,070 - INFO - 127.0.0.1 - - [26/Nov/2025 03:09:45] "GET /widget HTTP/1.1" 200 -
+2025-11-26 03:09:46,748 - INFO - 127.0.0.1 - - [26/Nov/2025 03:09:46] "[36mGET /widget HTTP/1.1[0m" 304 -
+2025-11-26 03:09:56,868 - INFO - User info saved: Yeash - 01642948324 - Session: session_1764104996861_gg9edb5w7
+2025-11-26 03:09:56,869 - INFO - 127.0.0.1 - - [26/Nov/2025 03:09:56] "POST /user-info HTTP/1.1" 200 -
+2025-11-26 03:10:02,559 - INFO - Received message: hi
+2025-11-26 03:10:02,630 - INFO - Predicted tag: greeting, Confidence: 1.00
+2025-11-26 03:10:02,640 - INFO - 127.0.0.1 - - [26/Nov/2025 03:10:02] "POST /chat HTTP/1.1" 200 -
+2025-11-26 03:10:07,051 - INFO - Received message: ki koor
+2025-11-26 03:10:07,119 - INFO - Predicted tag: greeting, Confidence: 0.76
+2025-11-26 03:10:07,130 - INFO - 127.0.0.1 - - [26/Nov/2025 03:10:07] "POST /chat HTTP/1.1" 200 -
+2025-11-26 03:12:43,033 - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-11-26 03:12:43,046 - INFO - Model and data loaded successfully
+2025-11-26 03:12:43,051 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.112:5000
+2025-11-26 03:12:43,052 - INFO - [33mPress CTRL+C to quit[0m
+2025-11-26 03:12:46,428 - INFO - 127.0.0.1 - - [26/Nov/2025 03:12:46] "GET /widget HTTP/1.1" 200 -
+2025-11-26 03:12:47,287 - INFO - 127.0.0.1 - - [26/Nov/2025 03:12:47] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-26 03:13:18,055 - INFO - User info saved: Yeash - 01642948324 - Session: session_1764105198039_2wl9budhu
+2025-11-26 03:13:18,056 - INFO - 127.0.0.1 - - [26/Nov/2025 03:13:18] "POST /user-info HTTP/1.1" 200 -
+2025-11-26 03:13:22,807 - INFO - Received message: hi
+2025-11-26 03:13:23,035 - INFO - Predicted tag: greeting, Confidence: 1.00
+2025-11-26 03:13:23,046 - INFO - 127.0.0.1 - - [26/Nov/2025 03:13:23] "POST /chat HTTP/1.1" 200 -
+2025-11-26 03:13:24,009 - INFO - Received message: hi
+2025-11-26 03:13:24,089 - INFO - Predicted tag: greeting, Confidence: 1.00
+2025-11-26 03:13:24,100 - INFO - 127.0.0.1 - - [26/Nov/2025 03:13:24] "POST /chat HTTP/1.1" 200 -
+2025-11-26 03:13:25,409 - INFO - Received message: hi
+2025-11-26 03:13:25,481 - INFO - Predicted tag: greeting, Confidence: 1.00
+2025-11-26 03:13:25,491 - INFO - 127.0.0.1 - - [26/Nov/2025 03:13:25] "POST /chat HTTP/1.1" 200 -
+2025-11-26 03:13:33,382 - INFO - Received message: ki koro
+2025-11-26 03:13:33,453 - INFO - Predicted tag: greeting, Confidence: 0.76
+2025-11-26 03:13:33,464 - INFO - 127.0.0.1 - - [26/Nov/2025 03:13:33] "POST /chat HTTP/1.1" 200 -
+2025-11-26 03:14:37,374 - INFO - 127.0.0.1 - - [26/Nov/2025 03:14:37] "GET /widget HTTP/1.1" 200 -
+2025-11-26 03:15:07,578 - INFO - User info saved: Yeash - 01642948324 - Session: session_1764105307559_qxgk677fq
+2025-11-26 03:15:07,579 - INFO - 127.0.0.1 - - [26/Nov/2025 03:15:07] "POST /user-info HTTP/1.1" 200 -
+2025-11-26 03:15:10,464 - INFO - Received message: hi
+2025-11-26 03:15:10,534 - INFO - Predicted tag: greeting, Confidence: 1.00
+2025-11-26 03:15:10,545 - INFO - 127.0.0.1 - - [26/Nov/2025 03:15:10] "POST /chat HTTP/1.1" 200 -
+2025-11-26 03:15:12,293 - INFO - Received message: hi
+2025-11-26 03:15:12,368 - INFO - Predicted tag: greeting, Confidence: 1.00
+2025-11-26 03:15:12,378 - INFO - 127.0.0.1 - - [26/Nov/2025 03:15:12] "POST /chat HTTP/1.1" 200 -
+2025-11-26 03:15:14,938 - INFO - Received message: hi
+2025-11-26 03:15:15,015 - INFO - Predicted tag: greeting, Confidence: 1.00
+2025-11-26 03:15:15,026 - INFO - 127.0.0.1 - - [26/Nov/2025 03:15:15] "POST /chat HTTP/1.1" 200 -
+2025-11-26 03:17:23,341 - INFO - 127.0.0.1 - - [26/Nov/2025 03:17:23] "GET /widget HTTP/1.1" 200 -
+2025-11-26 03:17:37,579 - INFO - 127.0.0.1 - - [26/Nov/2025 03:17:37] "GET /widget HTTP/1.1" 200 -
+2025-11-26 03:17:37,645 - INFO - 127.0.0.1 - - [26/Nov/2025 03:17:37] "GET /widget HTTP/1.1" 200 -
+2025-11-26 03:17:37,713 - INFO - 127.0.0.1 - - [26/Nov/2025 03:17:37] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-26 03:17:55,316 - INFO - User info saved: yeas - 01931933131 - Session: session_1764105475299_y4vgn8lbf
+2025-11-26 03:17:55,318 - INFO - 127.0.0.1 - - [26/Nov/2025 03:17:55] "POST /user-info HTTP/1.1" 200 -
+2025-11-26 03:18:03,685 - INFO - Received message: hi
+2025-11-26 03:18:03,759 - INFO - Predicted tag: greeting, Confidence: 1.00
+2025-11-26 03:18:03,824 - INFO - 127.0.0.1 - - [26/Nov/2025 03:18:03] "POST /chat HTTP/1.1" 200 -
+2025-11-26 03:18:11,044 - INFO - Received message: kmn acho
+2025-11-26 03:18:11,126 - INFO - Predicted tag: greeting, Confidence: 1.00
+2025-11-26 03:18:11,137 - INFO - 127.0.0.1 - - [26/Nov/2025 03:18:11] "POST /chat HTTP/1.1" 200 -
+2025-11-26 03:18:43,605 - INFO - Received message: ki koro
+2025-11-26 03:18:43,711 - INFO - Predicted tag: greeting, Confidence: 0.76
+2025-11-26 03:18:43,722 - INFO - 127.0.0.1 - - [26/Nov/2025 03:18:43] "POST /chat HTTP/1.1" 200 -
+2025-11-26 03:18:56,526 - INFO - Received message: service ki ki
+2025-11-26 03:18:56,599 - INFO - Predicted tag: services, Confidence: 1.00
+2025-11-26 03:18:56,610 - INFO - 127.0.0.1 - - [26/Nov/2025 03:18:56] "POST /chat HTTP/1.1" 200 -
+2025-11-26 03:21:07,623 - INFO - 127.0.0.1 - - [26/Nov/2025 03:21:07] "GET /widget HTTP/1.1" 200 -
+2025-11-26 03:21:09,738 - INFO - 127.0.0.1 - - [26/Nov/2025 03:21:09] "[36mGET /widget HTTP/1.1[0m" 304 -
+2025-11-26 03:21:20,782 - INFO - User info saved: yeash - 01931933131 - Session: session_1764105680767_nd8kuz6ci
+2025-11-26 03:21:20,783 - INFO - 127.0.0.1 - - [26/Nov/2025 03:21:20] "POST /user-info HTTP/1.1" 200 -
+2025-11-26 03:21:28,595 - INFO - Received message: hello
+2025-11-26 03:21:28,668 - INFO - Predicted tag: greeting, Confidence: 1.00
+2025-11-26 03:21:28,679 - INFO - 127.0.0.1 - - [26/Nov/2025 03:21:28] "POST /chat HTTP/1.1" 200 -
+2025-11-26 03:21:39,396 - INFO - 127.0.0.1 - - [26/Nov/2025 03:21:39] "GET /widget HTTP/1.1" 200 -
+2025-11-26 03:21:49,503 - INFO - User info saved: Yeash - 01642948324 - Session: session_1764105709495_pbek7mg1r
+2025-11-26 03:21:49,504 - INFO - 127.0.0.1 - - [26/Nov/2025 03:21:49] "POST /user-info HTTP/1.1" 200 -
+2025-11-26 03:21:58,280 - INFO - Received message: hi
+2025-11-26 03:21:58,351 - INFO - Predicted tag: greeting, Confidence: 1.00
+2025-11-26 03:21:58,362 - INFO - 127.0.0.1 - - [26/Nov/2025 03:21:58] "POST /chat HTTP/1.1" 200 -

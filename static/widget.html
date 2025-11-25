@@ -185,8 +185,9 @@
         }
 
         .cf-chatbox {
-            flex: 1;
+            flex: 1 1 auto;
             padding: 15px;
+            padding-bottom: 15px;
             overflow-y: auto;
             overflow-x: hidden;
             background: #f8fafc;
@@ -194,6 +195,8 @@
             flex-direction: column;
             gap: 12px;
             scroll-behavior: smooth;
+            min-height: 0;
+            height: 0;
         }
 
         .cf-message {
@@ -212,12 +215,18 @@
         }
 
         .cf-message-content {
-            max-width: 75%;
+            max-width: 85%;
             padding: 10px 14px;
             border-radius: 12px;
             word-wrap: break-word;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            white-space: pre-wrap;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
             font-size: 14px;
+            line-height: 1.5;
+            display: inline-block;
+            width: fit-content;
         }
 
         .cf-message.user .cf-message-content {
@@ -307,6 +316,7 @@
             border-top: 1px solid #e2e8f0;
             display: flex;
             gap: 8px;
+            flex-shrink: 0;
         }
 
         .cf-input-area input {
@@ -549,12 +559,18 @@
             }
         }
 
-        // Scroll to bottom
+        // Scroll to bottom - force scroll to absolute bottom
         function scrollToBottom() {
             const chatbox = document.getElementById('cf-chatbox');
-            requestAnimationFrame(() => {
-                chatbox.scrollTop = chatbox.scrollHeight;
-            });
+            if (!chatbox) return;
+            
+            // Force immediate scroll to bottom
+            chatbox.scrollTop = chatbox.scrollHeight;
+            
+            // Multiple attempts with delays
+            setTimeout(() => chatbox.scrollTop = chatbox.scrollHeight, 0);
+            setTimeout(() => chatbox.scrollTop = chatbox.scrollHeight, 50);
+            setTimeout(() => chatbox.scrollTop = chatbox.scrollHeight, 200);
         }
 
         // Send message
@@ -621,11 +637,13 @@
                     `;
                     chatbox.appendChild(botMsg);
                     
-                    // Multiple scroll attempts to ensure message is visible
+                    // Aggressive scroll attempts to ensure message is always visible
                     scrollToBottom();
                     setTimeout(scrollToBottom, 50);
                     setTimeout(scrollToBottom, 150);
                     setTimeout(scrollToBottom, 300);
+                    setTimeout(scrollToBottom, 500);
+                    setTimeout(scrollToBottom, 800);
                 }, 800);
 
             } catch (error) {
@@ -659,6 +677,23 @@
             }
         }
 
+        // MutationObserver to auto-scroll when content changes
+        let scrollObserver = null;
+        
+        function initScrollObserver() {
+            const chatbox = document.getElementById('cf-chatbox');
+            if (!chatbox) return;
+            
+            scrollObserver = new MutationObserver(() => {
+                scrollToBottom();
+            });
+            
+            scrollObserver.observe(chatbox, {
+                childList: true,
+                subtree: true
+            });
+        }
+
         // Enter key support
         document.addEventListener('DOMContentLoaded', function() {
             const input = document.getElementById('cf-msg');
@@ -668,7 +703,20 @@
                         sendMessage();
                     }
                 });
+                
+                // Scroll when user clicks/focuses on input
+                input.addEventListener('focus', function() {
+                    setTimeout(scrollToBottom, 100);
+                });
+                
+                // Also scroll when user types
+                input.addEventListener('input', function() {
+                    scrollToBottom();
+                });
             }
+            
+            // Initialize scroll observer
+            initScrollObserver();
         });
     </script>
 </body>
