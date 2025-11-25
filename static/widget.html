@@ -418,12 +418,12 @@
                         <div class="cf-timestamp" id="cf-welcome-time"></div>
                     </div>
                 </div>
-            </div>
-
-            <div class="cf-typing-indicator" id="cf-typing-indicator">
-                <span></span>
-                <span></span>
-                <span></span>
+                
+                <div class="cf-typing-indicator" id="cf-typing-indicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
 
             <div class="cf-input-area">
@@ -586,7 +586,10 @@
             // Show typing indicator
             const typingIndicator = document.getElementById('cf-typing-indicator');
             typingIndicator.classList.add('active');
-            scrollToBottom();
+            
+            // Scroll to show typing indicator
+            setTimeout(scrollToBottom, 50);
+            setTimeout(scrollToBottom, 150);
 
             try {
                 const response = await fetch(`${API_BASE_URL}/chat`, {
