@@ -188,10 +188,12 @@
             flex: 1;
             padding: 15px;
             overflow-y: auto;
+            overflow-x: hidden;
             background: #f8fafc;
             display: flex;
             flex-direction: column;
             gap: 12px;
+            scroll-behavior: smooth;
         }
 
         .cf-message {
@@ -550,7 +552,9 @@
         // Scroll to bottom
         function scrollToBottom() {
             const chatbox = document.getElementById('cf-chatbox');
-            chatbox.scrollTop = chatbox.scrollHeight;
+            requestAnimationFrame(() => {
+                chatbox.scrollTop = chatbox.scrollHeight;
+            });
         }
 
         // Send message
@@ -574,11 +578,15 @@
             `;
             chatbox.appendChild(userMsg);
             input.value = '';
+            
+            // Scroll to bottom immediately and after a short delay
             scrollToBottom();
+            setTimeout(scrollToBottom, 100);
 
             // Show typing indicator
             const typingIndicator = document.getElementById('cf-typing-indicator');
             typingIndicator.classList.add('active');
+            scrollToBottom();
 
             try {
                 const response = await fetch(`${API_BASE_URL}/chat`, {
@@ -609,7 +617,12 @@
                         </div>
                     `;
                     chatbox.appendChild(botMsg);
+                    
+                    // Multiple scroll attempts to ensure message is visible
                     scrollToBottom();
+                    setTimeout(scrollToBottom, 50);
+                    setTimeout(scrollToBottom, 150);
+                    setTimeout(scrollToBottom, 300);
                 }, 800);
 
             } catch (error) {
