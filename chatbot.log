@@ -646,3 +646,29 @@
 2025-11-26 03:21:58,280 - INFO - Received message: hi
 2025-11-26 03:21:58,351 - INFO - Predicted tag: greeting, Confidence: 1.00
 2025-11-26 03:21:58,362 - INFO - 127.0.0.1 - - [26/Nov/2025 03:21:58] "POST /chat HTTP/1.1" 200 -
+2025-11-26 03:23:45,188 - INFO - 127.0.0.1 - - [26/Nov/2025 03:23:45] "GET /widget HTTP/1.1" 200 -
+2025-11-26 03:23:53,302 - INFO - User info saved: Yeash - 01642948324 - Session: session_1764105833286_z6ds2vuma
+2025-11-26 03:23:53,303 - INFO - 127.0.0.1 - - [26/Nov/2025 03:23:53] "POST /user-info HTTP/1.1" 200 -
+2025-11-26 03:23:59,023 - INFO - Received message: hi
+2025-11-26 03:23:59,093 - INFO - Predicted tag: greeting, Confidence: 1.00
+2025-11-26 03:23:59,104 - INFO - 127.0.0.1 - - [26/Nov/2025 03:23:59] "POST /chat HTTP/1.1" 200 -
+2025-11-26 03:25:41,974 - INFO - 127.0.0.1 - - [26/Nov/2025 03:25:41] "GET /widget HTTP/1.1" 200 -
+2025-11-26 03:25:42,348 - INFO - 127.0.0.1 - - [26/Nov/2025 03:25:42] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-26 03:25:52,654 - INFO - User info saved: Yeash - 01642948324 - Session: session_1764105952638_4uxpo5wuh
+2025-11-26 03:25:52,655 - INFO - 127.0.0.1 - - [26/Nov/2025 03:25:52] "POST /user-info HTTP/1.1" 200 -
+2025-11-26 03:25:55,734 - INFO - Received message: hi
+2025-11-26 03:25:55,819 - INFO - Predicted tag: greeting, Confidence: 1.00
+2025-11-26 03:25:55,830 - INFO - 127.0.0.1 - - [26/Nov/2025 03:25:55] "POST /chat HTTP/1.1" 200 -
+2025-11-26 03:26:59,909 - INFO - 127.0.0.1 - - [26/Nov/2025 03:26:59] "GET /widget HTTP/1.1" 200 -
+2025-11-26 03:27:00,263 - INFO - 127.0.0.1 - - [26/Nov/2025 03:27:00] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-26 03:27:10,132 - INFO - User info saved: Yeash - 01642948324 - Session: session_1764106030117_a5lc0c0jl
+2025-11-26 03:27:10,133 - INFO - 127.0.0.1 - - [26/Nov/2025 03:27:10] "POST /user-info HTTP/1.1" 200 -
+2025-11-26 03:27:13,448 - INFO - Received message: hi
+2025-11-26 03:27:13,522 - INFO - Predicted tag: greeting, Confidence: 1.00
+2025-11-26 03:27:13,533 - INFO - 127.0.0.1 - - [26/Nov/2025 03:27:13] "POST /chat HTTP/1.1" 200 -
+2025-11-26 03:27:20,551 - INFO - Received message: cost
+2025-11-26 03:27:20,631 - INFO - Predicted tag: pricing, Confidence: 1.00
+2025-11-26 03:27:20,643 - INFO - 127.0.0.1 - - [26/Nov/2025 03:27:20] "POST /chat HTTP/1.1" 200 -
+2025-11-26 03:27:29,196 - INFO - Received message: service
+2025-11-26 03:27:29,270 - INFO - Predicted tag: services, Confidence: 1.00
+2025-11-26 03:27:29,282 - INFO - 127.0.0.1 - - [26/Nov/2025 03:27:29] "POST /chat HTTP/1.1" 200 -
