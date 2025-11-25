@@ -294,7 +294,9 @@
 
         <div class="section">
             <div class="tabs">
-                <button class="tab active" onclick="switchTab('low-confidence')">⚠️ Low Confidence</button>
+                <button class="tab active" onclick="switchTab('all-conversations')">💬 All Conversations</button>
+                <button class="tab" onclick="switchTab('users')">👥 Users</button>
+                <button class="tab" onclick="switchTab('low-confidence')">⚠️ Low Confidence</button>
                 <button class="tab" onclick="switchTab('negative-feedback')">👎 Negative Feedback</button>
             </div>
 
@@ -309,8 +311,6 @@
     </div>
 
     <script>
-        let currentTab = 'low-confidence';
-
         // Load statistics
         async function loadStats() {
             try {
@@ -323,6 +323,11 @@
                         <div class="icon">💬</div>
                         <div class="number">${stats.total_conversations}</div>
                         <div class="label">Total Conversations</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon">👥</div>
+                        <div class="number">${stats.total_users || 0}</div>
+                        <div class="label">Total Users</div>
                     </div>
                     <div class="stat-card">
                         <div class="icon">📊</div>
@@ -344,11 +349,6 @@
                         <div class="number">${stats.low_confidence_count}</div>
                         <div class="label">Low Confidence</div>
                     </div>
-                    <div class="stat-card">
-                        <div class="icon">📈</div>
-                        <div class="number">${stats.feedback_rate}%</div>
-                        <div class="label">Feedback Rate</div>
-                    </div>
                 `;
             } catch (error) {
                 document.getElementById('statsGrid').innerHTML = '<div class="loading">Error loading statistics</div>';
@@ -358,18 +358,70 @@
         // Load conversations
         async function loadConversations(type) {
             const content = document.getElementById('conversationContent');
-            content.innerHTML = '<div class="loading">Loading conversations...</div>';
+            content.innerHTML = '<div class="loading">Loading...</div>';
 
             try {
-                const endpoint = type === 'low-confidence' ? '/admin/low-confidence' : '/admin/negative-feedback';
+                let endpoint;
+                if (type === 'all-conversations') {
+                    endpoint = '/api/conversations';
+                } else if (type === 'users') {
+                    endpoint = '/api/users';
+                } else if (type === 'low-confidence') {
+                    endpoint = '/admin/low-confidence';
+                } else {
+                    endpoint = '/admin/negative-feedback';
+                }
+                
                 const response = await fetch(endpoint);
-                const conversations = await response.json();
+                const data = await response.json();
 
+                if (type === 'users') {
+                    if (data.length === 0) {
+                        content.innerHTML = `
+                            <div class="empty-state">
+                                <div class="icon">👥</div>
+                                <h3>No users registered yet</h3>
+                            </div>
+                        `;
+                        return;
+                    }
+                    
+                    content.innerHTML = `<div class="conversation-list">${data.map(user => `
+                        <div class="conversation-item">
+                            <div class="conversation-header">
+                                <div>
+                                    <strong style="font-size: 18px;">👤 ${user.name}</strong>
+                                </div>
+                                <span class="timestamp">${new Date(user.timestamp).toLocaleString()}</span>
+                            </div>
+                            
+                            <div style="margin: 15px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+                                <div>
+                                    <div class="message-label">📱 Mobile:</div>
+                                    <div style="padding: 8px; background: white; border-radius: 6px;">${user.mobile}</div>
+                                </div>
+                                <div>
+                                    <div class="message-label">📧 Email:</div>
+                                    <div style="padding: 8px; background: white; border-radius: 6px;">${user.email || 'Not provided'}</div>
+                                </div>
+                                <div>
+                                    <div class="message-label">💬 Conversations:</div>
+                                    <div style="padding: 8px; background: white; border-radius: 6px; font-weight: bold; color: #2563eb;">${user.conversation_count}</div>
+                                </div>
+                            </div>
+                            
+                            <div style="font-size: 11px; color: #94a3b8;">Session ID: ${user.session_id}</div>
+                        </div>
+                    `).join('')}</div>`;
+                    return;
+                }
+
+                const conversations = data;
                 if (conversations.length === 0) {
                     content.innerHTML = `
                         <div class="empty-state">
                             <div class="icon">🎉</div>
-                            <h3>No ${type === 'low-confidence' ? 'low confidence' : 'negative feedback'} conversations</h3>
+                            <h3>No ${type === 'low-confidence' ? 'low confidence' : type === 'negative-feedback' ? 'negative feedback' : ''} conversations</h3>
                             <p>Everything is looking good!</p>
                         </div>
                     `;
@@ -377,7 +429,7 @@
                 }
 
                 content.innerHTML = `<div class="conversation-list">${conversations.map(conv => `
-                    <div class="conversation-item ${type === 'low-confidence' ? 'low-confidence' : 'negative'}">
+                    <div class="conversation-item ${type === 'low-confidence' ? 'low-confidence' : type === 'negative-feedback' ? 'negative' : ''}">
                         <div class="conversation-header">
                             <div>
                                 <span class="confidence-badge ${getConfidenceClass(conv.confidence)}">
@@ -387,6 +439,12 @@
                             </div>
                             <span class="timestamp">${new Date(conv.timestamp).toLocaleString()}</span>
                         </div>
+                        
+                        ${conv.user_name ? `
+                        <div style="margin: 10px 0; padding: 10px; background: #eff6ff; border-radius: 6px; font-size: 13px;">
+                            <strong>👤 ${conv.user_name}</strong> | 📱 ${conv.user_mobile}${conv.user_email ? ` | 📧 ${conv.user_email}` : ''}
+                        </div>
+                        ` : ''}
                         
                         <div class="message-pair">
                             <div class="message-label">👤 User Message:</div>
@@ -400,7 +458,7 @@
                     </div>
                 `).join('')}</div>`;
             } catch (error) {
-                content.innerHTML = '<div class="loading">Error loading conversations</div>';
+                content.innerHTML = '<div class="loading">Error loading data</div>';
             }
         }
 
@@ -444,8 +502,9 @@
         }
 
         // Initialize dashboard
+        let currentTab = 'all-conversations';
         loadStats();
-        loadConversations('low-confidence');
+        loadConversations('all-conversations');
 
         // Auto-refresh every 30 seconds
         setInterval(() => {

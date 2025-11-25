@@ -10,6 +10,18 @@ def init_db():
     conn = sqlite3.connect(DATABASE_PATH)
     cursor = conn.cursor()
     
+    # Create user_info table
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS user_info (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            mobile TEXT NOT NULL,
+            email TEXT,
+            session_id TEXT UNIQUE NOT NULL,
+            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+    
     # Create conversations table
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS conversations (
@@ -20,7 +32,8 @@ def init_db():
             confidence REAL,
             timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
             session_id TEXT,
-            ip_address TEXT
+            ip_address TEXT,
+            FOREIGN KEY (session_id) REFERENCES user_info (session_id)
         )
     ''')
     
@@ -43,6 +56,48 @@ def init_db():
     conn.commit()
     conn.close()
     print("✅ Database initialized successfully!")
+
+def save_user_info(name, mobile, email, session_id):
+    """Save user information"""
+    conn = sqlite3.connect(DATABASE_PATH)
+    cursor = conn.cursor()
+    
+    try:
+        cursor.execute('''
+            INSERT INTO user_info (name, mobile, email, session_id)
+            VALUES (?, ?, ?, ?)
+        ''', (name, mobile, email, session_id))
+        
+        conn.commit()
+        conn.close()
+        return True
+    except sqlite3.IntegrityError:
+        # Session ID already exists
+        conn.close()
+        return False
+
+def get_user_info(session_id):
+    """Get user information by session ID"""
+    conn = sqlite3.connect(DATABASE_PATH)
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+        SELECT name, mobile, email, timestamp
+        FROM user_info
+        WHERE session_id = ?
+    ''', (session_id,))
+    
+    row = cursor.fetchone()
+    conn.close()
+    
+    if row:
+        return {
+            'name': row[0],
+            'mobile': row[1],
+            'email': row[2],
+            'timestamp': row[3]
+        }
+    return None
 
 def log_conversation(user_message, bot_response, intent_tag, confidence, session_id=None, ip_address=None):
     """Log a conversation to the database"""
@@ -82,9 +137,10 @@ def get_low_confidence_conversations(threshold=0.7, limit=50):
     
     cursor.execute('''
         SELECT c.id, c.user_message, c.bot_response, c.intent_tag, c.confidence, c.timestamp,
-               f.feedback_type
+               f.feedback_type, u.name, u.mobile, u.email
         FROM conversations c
         LEFT JOIN feedback f ON c.id = f.conversation_id
+        LEFT JOIN user_info u ON c.session_id = u.session_id
         WHERE c.confidence < ?
         ORDER BY c.confidence ASC, c.timestamp DESC
         LIMIT ?
@@ -101,7 +157,10 @@ def get_low_confidence_conversations(threshold=0.7, limit=50):
             'intent_tag': row[3],
             'confidence': row[4],
             'timestamp': row[5],
-            'feedback': row[6]
+            'feedback': row[6],
+            'user_name': row[7],
+            'user_mobile': row[8],
+            'user_email': row[9]
         }
         for row in rows
     ]
@@ -112,9 +171,11 @@ def get_negative_feedback_conversations(limit=50):
     cursor = conn.cursor()
     
     cursor.execute('''
-        SELECT c.id, c.user_message, c.bot_response, c.intent_tag, c.confidence, c.timestamp
+        SELECT c.id, c.user_message, c.bot_response, c.intent_tag, c.confidence, c.timestamp,
+               u.name, u.mobile, u.email
         FROM conversations c
         JOIN feedback f ON c.id = f.conversation_id
+        LEFT JOIN user_info u ON c.session_id = u.session_id
         WHERE f.feedback_type = 'negative'
         ORDER BY c.timestamp DESC
         LIMIT ?
@@ -130,7 +191,76 @@ def get_negative_feedback_conversations(limit=50):
             'bot_response': row[2],
             'intent_tag': row[3],
             'confidence': row[4],
-            'timestamp': row[5]
+            'timestamp': row[5],
+            'user_name': row[6],
+            'user_mobile': row[7],
+            'user_email': row[8]
+        }
+        for row in rows
+    ]
+
+def get_all_conversations(limit=100):
+    """Get all recent conversations with user info"""
+    conn = sqlite3.connect(DATABASE_PATH)
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+        SELECT c.id, c.user_message, c.bot_response, c.intent_tag, c.confidence, c.timestamp,
+               f.feedback_type, u.name, u.mobile, u.email, c.session_id
+        FROM conversations c
+        LEFT JOIN feedback f ON c.id = f.conversation_id
+        LEFT JOIN user_info u ON c.session_id = u.session_id
+        ORDER BY c.timestamp DESC
+        LIMIT ?
+    ''', (limit,))
+    
+    rows = cursor.fetchall()
+    conn.close()
+    
+    return [
+        {
+            'id': row[0],
+            'user_message': row[1],
+            'bot_response': row[2],
+            'intent_tag': row[3],
+            'confidence': row[4],
+            'timestamp': row[5],
+            'feedback': row[6],
+            'user_name': row[7],
+            'user_mobile': row[8],
+            'user_email': row[9],
+            'session_id': row[10]
+        }
+        for row in rows
+    ]
+
+def get_all_users(limit=100):
+    """Get all registered users"""
+    conn = sqlite3.connect(DATABASE_PATH)
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+        SELECT u.id, u.name, u.mobile, u.email, u.session_id, u.timestamp,
+               COUNT(c.id) as conversation_count
+        FROM user_info u
+        LEFT JOIN conversations c ON u.session_id = c.session_id
+        GROUP BY u.id
+        ORDER BY u.timestamp DESC
+        LIMIT ?
+    ''', (limit,))
+    
+    rows = cursor.fetchall()
+    conn.close()
+    
+    return [
+        {
+            'id': row[0],
+            'name': row[1],
+            'mobile': row[2],
+            'email': row[3],
+            'session_id': row[4],
+            'timestamp': row[5],
+            'conversation_count': row[6]
         }
         for row in rows
     ]
@@ -160,10 +290,15 @@ def get_statistics():
     cursor.execute('SELECT COUNT(*) FROM conversations WHERE confidence < 0.7')
     low_confidence_count = cursor.fetchone()[0]
     
+    # Total users
+    cursor.execute('SELECT COUNT(*) FROM user_info')
+    total_users = cursor.fetchone()[0]
+    
     conn.close()
     
     return {
         'total_conversations': total_conversations,
+        'total_users': total_users,
         'average_confidence': round(avg_confidence, 4),
         'positive_feedback': positive_feedback,
         'negative_feedback': negative_feedback,

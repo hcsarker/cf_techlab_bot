@@ -26,7 +26,18 @@ logging.basicConfig(
 )
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+# Enable CORS for production website
+CORS(app, resources={
+    r"/*": {
+        "origins": [
+            "https://cftechlab.vercel.app",
+            "https://cftechlab.hcsarker.me",
+            "https://chatbot.cftechlab.hcsarker.me",
+            "http://127.0.0.1:5000",
+            "http://localhost:5000"
+        ]
+    }
+})
 
 # Initialize database
 database.init_db()
@@ -46,6 +57,11 @@ def index():
     """Serve the main chat interface"""
     return send_from_directory('static', 'index.html')
 
+@app.route('/widget')
+def widget():
+    """Serve the embeddable chat widget"""
+    return send_from_directory('static', 'widget.html')
+
 @app.route('/health', methods=['GET'])
 def health():
     """Health check endpoint"""
@@ -54,6 +70,33 @@ def health():
         'timestamp': datetime.now().isoformat(),
         'model_loaded': model is not None
     }), 200
+
+@app.route('/user-info', methods=['POST'])
+def save_user_info_endpoint():
+    """Save user information"""
+    try:
+        if not request.json or 'name' not in request.json or 'mobile' not in request.json or 'session_id' not in request.json:
+            return jsonify({'error': 'Invalid request format'}), 400
+        
+        name = request.json['name'].strip()
+        mobile = request.json['mobile'].strip()
+        email = request.json.get('email', '').strip()
+        session_id = request.json['session_id']
+        
+        if not name or not mobile:
+            return jsonify({'error': 'Name and mobile are required'}), 400
+        
+        success = database.save_user_info(name, mobile, email, session_id)
+        
+        if success:
+            logging.info(f"User info saved: {name} - {mobile} - Session: {session_id}")
+            return jsonify({'success': True, 'message': 'User information saved'})
+        else:
+            return jsonify({'error': 'Session ID already exists'}), 409
+    
+    except Exception as e:
+        logging.error(f"Error saving user info: {str(e)}")
+        return jsonify({'error': 'Internal server error'}), 500
 
 @app.route('/chat', methods=['POST'])
 def chat():
@@ -64,6 +107,7 @@ def chat():
             return jsonify({'error': 'Invalid request format'}), 400
         
         msg = request.json['message'].strip()
+        session_id = request.json.get('session_id')
         
         if not msg:
             return jsonify({'error': 'Message cannot be empty'}), 400
@@ -104,7 +148,7 @@ def chat():
             bot_response=response,
             intent_tag=tag,
             confidence=float(confidence),
-            session_id=request.headers.get('User-Agent', 'unknown')[:100],
+            session_id=session_id or request.headers.get('User-Agent', 'unknown')[:100],
             ip_address=request.remote_addr
         )
         
@@ -187,6 +231,28 @@ def admin_export():
         logging.error(f"Error exporting training data: {str(e)}")
         return jsonify({'error': 'Internal server error'}), 500
 
+@app.route('/api/conversations', methods=['GET'])
+def get_conversations():
+    """Get all recent conversations with user info"""
+    try:
+        limit = int(request.args.get('limit', 100))
+        conversations = database.get_all_conversations(limit)
+        return jsonify(conversations)
+    except Exception as e:
+        logging.error(f"Error getting conversations: {str(e)}")
+        return jsonify({'error': 'Internal server error'}), 500
+
+@app.route('/api/users', methods=['GET'])
+def get_users():
+    """Get all registered users"""
+    try:
+        limit = int(request.args.get('limit', 100))
+        users = database.get_all_users(limit)
+        return jsonify(users)
+    except Exception as e:
+        logging.error(f"Error getting users: {str(e)}")
+        return jsonify({'error': 'Internal server error'}), 500
+
 @app.route('/admin', methods=['GET'])
 def admin_dashboard():
     """Admin dashboard to review feedback and low confidence conversations"""
@@ -204,4 +270,5 @@ def internal_error(error):
     return jsonify({'error': 'Internal server error'}), 500
 
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0', port=5000)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=False, host='0.0.0.0', port=port)

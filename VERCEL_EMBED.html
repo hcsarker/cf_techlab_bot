@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vercel Integration - CF TechLab Chatbot</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        h1 {
+            color: #2563eb;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        h2 {
+            color: #1e293b;
+            font-size: 24px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .subtitle {
+            color: #64748b;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .step {
+            background: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .step h3 {
+            color: #2563eb;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        .note {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .note strong {
+            color: #92400e;
+        }
+        
+        .success {
+            background: #dcfce7;
+            border-left: 4px solid #10b981;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        textarea {
+            width: 100%;
+            min-height: 250px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            padding: 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            background: #1e293b;
+            color: #10b981;
+            resize: vertical;
+            line-height: 1.6;
+        }
+        
+        .copy-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .copy-btn:hover {
+            background: #1e40af;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+        }
+        
+        .copy-btn:active {
+            transform: translateY(0);
+        }
+        
+        .success-msg {
+            display: none;
+            color: #166534;
+            font-weight: 600;
+            margin-top: 10px;
+            padding: 10px;
+            background: #dcfce7;
+            border-radius: 5px;
+        }
+        
+        code {
+            background: #f1f5f9;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #2563eb;
+            font-size: 14px;
+        }
+        
+        .url-box {
+            background: #1e293b;
+            color: #10b981;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px 0;
+            word-break: break-all;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .tab {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #64748b;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
+            color: #2563eb;
+            border-bottom-color: #2563eb;
+            font-weight: 600;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        ul {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        
+        a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .checklist {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .checklist label {
+            display: block;
+            margin: 12px 0;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        .checklist input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>🚀 Chatbot for Vercel Website</h1>
+            <p class="subtitle">Add AI Chatbot to <strong>cftechlab.vercel.app</strong></p>
+            
+            <div class="success">
+                <strong>✨ Perfect for Vercel!</strong> Deploy chatbot on Railway.app (free) and embed in your Vercel website
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📋 Quick 3-Step Process</h2>
+            
+            <div class="step">
+                <h3>Step 1: Deploy Chatbot on Railway.app (Free)</h3>
+                <ol>
+                    <li>Visit <a href="https://railway.app" target="_blank">Railway.app</a></li>
+                    <li>Sign in with GitHub</li>
+                    <li>New Project → Deploy from GitHub</li>
+                    <li>Select: <code>hcsarker/cf_techlab_bot</code></li>
+                    <li>Railway auto-deploys (2-3 minutes)</li>
+                    <li>Copy your Railway URL (like: <code>xyz.up.railway.app</code>)</li>
+                </ol>
+            </div>
+            
+            <div class="step">
+                <h3>Step 2: Copy Embed Code</h3>
+                <p>Choose your framework below and copy the code</p>
+            </div>
+            
+            <div class="step">
+                <h3>Step 3: Add to Vercel Project</h3>
+                <p>Paste the code in your project, commit, and push to GitHub. Vercel auto-deploys! ✨</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>💻 Select Your Framework</h2>
+            
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('html')">Plain HTML</button>
+                <button class="tab" onclick="switchTab('nextjs')">Next.js</button>
+                <button class="tab" onclick="switchTab('react')">React</button>
+            </div>
+            
+            <!-- HTML Tab -->
+            <div class="tab-content active" id="html">
+                <h3>For HTML/Static Sites</h3>
+                <p>Add this code before <code>&lt;/body&gt;</code> tag:</p>
+                
+                <div class="note">
+                    <strong>⚠️ Important:</strong> Replace <code>YOUR-RAILWAY-URL.up.railway.app</code> with your actual Railway URL
+                </div>
+                
+                <textarea id="html-code" readonly><!-- CF TechLab AI Chatbot -->
+<iframe 
+    src="https://YOUR-RAILWAY-URL.up.railway.app/widget" 
+    style="position: fixed; bottom: 0; right: 0; width: 100%; height: 100%; border: none; z-index: 999999; pointer-events: none;"
+    id="cf-chatbot-iframe">
+</iframe>
+
+<style>
+    #cf-chatbot-iframe {
+        pointer-events: none;
+    }
+</style>
+
+<script>
+    const iframe = document.getElementById('cf-chatbot-iframe');
+    
+    document.addEventListener('mousemove', function(e) {
+        if (e.clientX > window.innerWidth - 150 && e.clientY > window.innerHeight - 150) {
+            iframe.style.pointerEvents = 'auto';
+        } else {
+            iframe.style.pointerEvents = 'none';
+        }
+    });
+</script></textarea>
+                
+                <button class="copy-btn" onclick="copyCode('html-code', 'html-msg')">
+                    📋 Copy Code
+                </button>
+                <div class="success-msg" id="html-msg">✅ Copied to clipboard!</div>
+            </div>
+            
+            <!-- Next.js Tab -->
+            <div class="tab-content" id="nextjs">
+                <h3>For Next.js (App Router or Pages Router)</h3>
+                
+                <p><strong>Create a new component:</strong> <code>components/Chatbot.jsx</code></p>
+                
+                <textarea id="nextjs-code" readonly>'use client'; // For Next.js 13+ App Router
+
+import { useEffect } from 'react';
+
+export default function Chatbot() {
+  useEffect(() => {
+    const iframe = document.getElementById('cf-chatbot-iframe');
+    if (!iframe) return;
+    
+    const handleMouseMove = (e) => {
+      if (e.clientX > window.innerWidth - 150 && e.clientY > window.innerHeight - 150) {
+        iframe.style.pointerEvents = 'auto';
+      } else {
+        iframe.style.pointerEvents = 'none';
+      }
+    };
+    
+    document.addEventListener('mousemove', handleMouseMove);
+    return () => document.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+  
+  return (
+    <iframe
+      id="cf-chatbot-iframe"
+      src="https://YOUR-RAILWAY-URL.up.railway.app/widget"
+      style={{
+        position: 'fixed',
+        bottom: 0,
+        right: 0,
+        width: '100%',
+        height: '100%',
+        border: 'none',
+        zIndex: 999999,
+        pointerEvents: 'none'
+      }}
+    />
+  );
+}</textarea>
+                
+                <button class="copy-btn" onclick="copyCode('nextjs-code', 'nextjs-msg')">
+                    📋 Copy Component Code
+                </button>
+                <div class="success-msg" id="nextjs-msg">✅ Copied to clipboard!</div>
+                
+                <br><br>
+                <p><strong>Then import in your layout:</strong> <code>app/layout.js</code></p>
+                
+                <textarea id="nextjs-layout" readonly>import Chatbot from '@/components/Chatbot';
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        {children}
+        <Chatbot />
+      </body>
+    </html>
+  );
+}</textarea>
+                
+                <button class="copy-btn" onclick="copyCode('nextjs-layout', 'nextjs-layout-msg')">
+                    📋 Copy Layout Code
+                </button>
+                <div class="success-msg" id="nextjs-layout-msg">✅ Copied to clipboard!</div>
+            </div>
+            
+            <!-- React Tab -->
+            <div class="tab-content" id="react">
+                <h3>For React (Vite, CRA, etc.)</h3>
+                
+                <p><strong>Create a new component:</strong> <code>src/components/Chatbot.jsx</code></p>
+                
+                <textarea id="react-code" readonly>import { useEffect } from 'react';
+
+export default function Chatbot() {
+  useEffect(() => {
+    const iframe = document.getElementById('cf-chatbot-iframe');
+    if (!iframe) return;
+    
+    const handleMouseMove = (e) => {
+      if (e.clientX > window.innerWidth - 150 && e.clientY > window.innerHeight - 150) {
+        iframe.style.pointerEvents = 'auto';
+      } else {
+        iframe.style.pointerEvents = 'none';
+      }
+    };
+    
+    document.addEventListener('mousemove', handleMouseMove);
+    return () => document.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+  
+  return (
+    <iframe
+      id="cf-chatbot-iframe"
+      src="https://YOUR-RAILWAY-URL.up.railway.app/widget"
+      style={{
+        position: 'fixed',
+        bottom: 0,
+        right: 0,
+        width: '100%',
+        height: '100%',
+        border: 'none',
+        zIndex: 999999,
+        pointerEvents: 'none'
+      }}
+    />
+  );
+}</textarea>
+                
+                <button class="copy-btn" onclick="copyCode('react-code', 'react-msg')">
+                    📋 Copy Component Code
+                </button>
+                <div class="success-msg" id="react-msg">✅ Copied to clipboard!</div>
+                
+                <br><br>
+                <p><strong>Then import in App.jsx:</strong></p>
+                
+                <textarea id="react-app" readonly>import Chatbot from './components/Chatbot';
+
+function App() {
+  return (
+    <div className="App">
+      {/* Your app content */}
+      
+      <Chatbot />
+    </div>
+  );
+}
+
+export default App;</textarea>
+                
+                <button class="copy-btn" onclick="copyCode('react-app', 'react-app-msg')">
+                    📋 Copy App Code
+                </button>
+                <div class="success-msg" id="react-app-msg">✅ Copied to clipboard!</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>✅ Deployment Checklist</h2>
+            
+            <div class="checklist">
+                <label><input type="checkbox"> Push chatbot code to GitHub</label>
+                <label><input type="checkbox"> Deploy on Railway.app</label>
+                <label><input type="checkbox"> Copy Railway public URL</label>
+                <label><input type="checkbox"> Replace <code>YOUR-RAILWAY-URL</code> in code</label>
+                <label><input type="checkbox"> Add code to Vercel project</label>
+                <label><input type="checkbox"> Test locally (<code>npm run dev</code>)</label>
+                <label><input type="checkbox"> Commit and push to GitHub</label>
+                <label><input type="checkbox"> Vercel auto-deploys</label>
+                <label><input type="checkbox"> Test on live Vercel site</label>
+                <label><input type="checkbox"> Check chat button appears</label>
+                <label><input type="checkbox"> Test user registration flow</label>
+                <label><input type="checkbox"> Verify messages save to database</label>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🧪 Test URLs</h2>
+            
+            <p><strong>After Railway deployment:</strong></p>
+            <ul>
+                <li>Widget: <code>https://your-railway-url.up.railway.app/widget</code></li>
+                <li>Admin Dashboard: <code>https://your-railway-url.up.railway.app/admin</code></li>
+                <li>Health Check: <code>https://your-railway-url.up.railway.app/health</code></li>
+            </ul>
+            
+            <p><strong>Your Vercel website:</strong></p>
+            <ul>
+                <li>Production: <a href="https://cftechlab.vercel.app" target="_blank">https://cftechlab.vercel.app</a></li>
+                <li>Chat button should appear in bottom-right corner 💬</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>📊 What Happens?</h2>
+            
+            <div class="step">
+                <strong>1️⃣ User visits cftechlab.vercel.app</strong><br>
+                Sees chat button in bottom-right corner
+            </div>
+            
+            <div class="step">
+                <strong>2️⃣ Clicks chat button</strong><br>
+                Registration form appears (Name, Mobile, Email)
+            </div>
+            
+            <div class="step">
+                <strong>3️⃣ Submits info</strong><br>
+                User data saves to database, chat interface opens
+            </div>
+            
+            <div class="step">
+                <strong>4️⃣ Starts chatting</strong><br>
+                AI bot responds, all conversations saved
+            </div>
+            
+            <div class="step">
+                <strong>5️⃣ Admin monitors</strong><br>
+                You can see all users, conversations, feedback from admin dashboard
+            </div>
+        </div>
+
+        <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+            <h2 style="color: white;">🎉 Ready to Deploy!</h2>
+            <p style="font-size: 18px; line-height: 1.8;">
+                1. Deploy chatbot on Railway.app (free)<br>
+                2. Copy embed code from above<br>
+                3. Add to your Vercel project<br>
+                4. Push to GitHub → Vercel auto-deploys<br>
+                5. Your AI chatbot is LIVE! 🚀
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function copyCode(textareaId, msgId) {
+            const textarea = document.getElementById(textareaId);
+            textarea.select();
+            document.execCommand('copy');
+            
+            const msg = document.getElementById(msgId);
+            msg.style.display = 'block';
+            
+            setTimeout(() => {
+                msg.style.display = 'none';
+            }, 3000);
+        }
+        
+        function switchTab(tab) {
+            // Remove active from all tabs
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            // Add active to clicked tab
+            event.target.classList.add('active');
+            document.getElementById(tab).classList.add('active');
+        }
+    </script>
+</body>
+</html>

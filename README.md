@@ -142,6 +142,35 @@ curl http://127.0.0.1:5000/admin/stats
 
 📖 **Full Documentation**: See [FEEDBACK_SYSTEM.md](FEEDBACK_SYSTEM.md) for detailed guide on using the feedback system, admin dashboard, and retraining workflow.
 
+## 🌐 Embed Chatbot in Your Website
+
+The chatbot can be easily embedded in any website!
+
+### Quick Embed (Iframe):
+
+```html
+<iframe
+  src="http://127.0.0.1:5000/widget"
+  style="position: fixed; bottom: 0; right: 0; width: 100%; height: 100%; border: none; z-index: 999999; pointer-events: none;"
+>
+</iframe>
+```
+
+### Features:
+
+- ✅ **User Information Collection** - Collects name, mobile, email before chat
+- ✅ **Session Tracking** - Links all conversations to user
+- ✅ **Database Storage** - Saves user info in `user_info` table
+- ✅ **Minimizable Widget** - Professional floating chat button
+- ✅ **Mobile Responsive** - Works on all devices
+
+### Widget Demo:
+
+- Test widget: http://127.0.0.1:5000/widget
+- Embed demo: `embed_demo.html`
+
+📖 **Complete Guide**: See [EMBED_GUIDE.md](EMBED_GUIDE.md) for detailed embedding instructions, customization options, and production deployment.
+
 ## 🎨 Chatbot Capabilities
 
 The bot understands queries about:

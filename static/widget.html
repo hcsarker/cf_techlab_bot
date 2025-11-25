@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CF TechLab Chat Widget</title>
+    <style>
+        /* Widget Button */
+        #cf-chat-widget-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9998;
+            transition: all 0.3s;
+        }
+
+        #cf-chat-widget-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.6);
+        }
+
+        #cf-chat-widget-button.open {
+            background: #ef4444;
+        }
+
+        /* Widget Container */
+        #cf-chat-widget {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 380px;
+            height: 600px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #cf-chat-widget.active {
+            display: flex;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Header */
+        .cf-widget-header {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cf-widget-header h3 {
+            margin: 0;
+            font-size: 18px;
+            flex: 1;
+        }
+
+        .cf-widget-header .cf-status {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* User Info Form */
+        #cf-user-form {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex: 1;
+            justify-content: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        #cf-user-form h3 {
+            color: #1e293b;
+            margin: 0 0 10px 0;
+            text-align: center;
+        }
+
+        #cf-user-form p {
+            color: #64748b;
+            margin: 0 0 20px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .cf-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .cf-form-group label {
+            color: #475569;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .cf-form-group input {
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .cf-form-group input:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .cf-form-group input.error {
+            border-color: #ef4444;
+        }
+
+        .cf-form-error {
+            color: #ef4444;
+            font-size: 12px;
+            display: none;
+        }
+
+        .cf-submit-btn {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .cf-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Chat Container */
+        #cf-chat-container {
+            display: none;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        #cf-chat-container.active {
+            display: flex;
+        }
+
+        .cf-chatbox {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .cf-message {
+            display: flex;
+            gap: 8px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .cf-message.user {
+            justify-content: flex-end;
+        }
+
+        .cf-message-content {
+            max-width: 75%;
+            padding: 10px 14px;
+            border-radius: 12px;
+            word-wrap: break-word;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            font-size: 14px;
+        }
+
+        .cf-message.user .cf-message-content {
+            background: #2563eb;
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .cf-message.bot .cf-message-content {
+            background: white;
+            color: #1e293b;
+            border-bottom-left-radius: 4px;
+        }
+
+        .cf-timestamp {
+            font-size: 10px;
+            opacity: 0.7;
+            margin-top: 4px;
+        }
+
+        .cf-feedback-buttons {
+            display: flex;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .cf-feedback-btn {
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 4px 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s;
+        }
+
+        .cf-feedback-btn:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .cf-feedback-btn.selected {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        /* Typing Indicator */
+        .cf-typing-indicator {
+            display: none;
+            padding: 10px;
+            background: white;
+            border-radius: 12px;
+            width: fit-content;
+        }
+
+        .cf-typing-indicator.active {
+            display: block;
+        }
+
+        .cf-typing-indicator span {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #94a3b8;
+            animation: bounce 1.4s infinite;
+            margin: 0 2px;
+        }
+
+        .cf-typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .cf-typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes bounce {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-8px); }
+        }
+
+        /* Input Area */
+        .cf-input-area {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            gap: 8px;
+        }
+
+        .cf-input-area input {
+            flex: 1;
+            padding: 10px 14px;
+            border: 2px solid #e2e8f0;
+            border-radius: 20px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .cf-input-area input:focus {
+            border-color: #2563eb;
+        }
+
+        .cf-send-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .cf-send-btn:hover {
+            background: #1e40af;
+            transform: scale(1.05);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 500px) {
+            #cf-chat-widget {
+                width: calc(100vw - 40px);
+                height: calc(100vh - 120px);
+                right: 20px;
+                bottom: 90px;
+            }
+        }
+
+        /* Scrollbar */
+        .cf-chatbox::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .cf-chatbox::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .cf-chatbox::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Chat Widget Button -->
+    <button id="cf-chat-widget-button" onclick="toggleChatWidget()">
+        💬
+    </button>
+
+    <!-- Chat Widget Container -->
+    <div id="cf-chat-widget">
+        <!-- Header -->
+        <div class="cf-widget-header">
+            <div class="cf-status"></div>
+            <h3>🤖 CF TechLab Assistant</h3>
+        </div>
+
+        <!-- User Info Form -->
+        <div id="cf-user-form">
+            <h3>Welcome! 👋</h3>
+            <p>Please share your details to start chatting</p>
+            
+            <div class="cf-form-group">
+                <label for="cf-user-name">Name *</label>
+                <input type="text" id="cf-user-name" placeholder="Enter your name" required>
+                <span class="cf-form-error" id="cf-name-error">Please enter your name</span>
+            </div>
+
+            <div class="cf-form-group">
+                <label for="cf-user-mobile">Mobile *</label>
+                <input type="tel" id="cf-user-mobile" placeholder="01XXXXXXXXX" required>
+                <span class="cf-form-error" id="cf-mobile-error">Please enter valid mobile number</span>
+            </div>
+
+            <div class="cf-form-group">
+                <label for="cf-user-email">Email (Optional)</label>
+                <input type="email" id="cf-user-email" placeholder="your@email.com">
+                <span class="cf-form-error" id="cf-email-error">Please enter valid email</span>
+            </div>
+
+            <button class="cf-submit-btn" onclick="submitUserInfo()">
+                Start Chat 🚀
+            </button>
+        </div>
+
+        <!-- Chat Container -->
+        <div id="cf-chat-container">
+            <div class="cf-chatbox" id="cf-chatbox">
+                <div class="cf-message bot">
+                    <div class="cf-message-content">
+                        👋 Assalamualaikum! Welcome to CF TechLab. How can I help you today?
+                        <div class="cf-timestamp" id="cf-welcome-time"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cf-typing-indicator" id="cf-typing-indicator">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="cf-input-area">
+                <input type="text" id="cf-msg" placeholder="Type your message..." autocomplete="off">
+                <button class="cf-send-btn" onclick="sendMessage()">📤</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Auto-detect API URL based on current hostname
+        const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+            ? 'http://127.0.0.1:5000' 
+            : window.location.origin;
+        let sessionId = null;
+
+        // Generate unique session ID
+        function generateSessionId() {
+            return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        }
+
+        // Toggle chat widget
+        function toggleChatWidget() {
+            const widget = document.getElementById('cf-chat-widget');
+            const button = document.getElementById('cf-chat-widget-button');
+            
+            if (widget.classList.contains('active')) {
+                widget.classList.remove('active');
+                button.classList.remove('open');
+                button.textContent = '💬';
+            } else {
+                widget.classList.add('active');
+                button.classList.add('open');
+                button.textContent = '✖️';
+            }
+        }
+
+        // Validate mobile number
+        function validateMobile(mobile) {
+            const bdMobileRegex = /^01[3-9]\d{8}$/;
+            return bdMobileRegex.test(mobile);
+        }
+
+        // Validate email
+        function validateEmail(email) {
+            if (!email) return true; // Email is optional
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Submit user info
+        async function submitUserInfo() {
+            const name = document.getElementById('cf-user-name').value.trim();
+            const mobile = document.getElementById('cf-user-mobile').value.trim();
+            const email = document.getElementById('cf-user-email').value.trim();
+
+            // Reset errors
+            document.querySelectorAll('.cf-form-error').forEach(err => err.style.display = 'none');
+            document.querySelectorAll('.cf-form-group input').forEach(inp => inp.classList.remove('error'));
+
+            // Validate
+            let hasError = false;
+
+            if (!name) {
+                document.getElementById('cf-name-error').style.display = 'block';
+                document.getElementById('cf-user-name').classList.add('error');
+                hasError = true;
+            }
+
+            if (!mobile || !validateMobile(mobile)) {
+                document.getElementById('cf-mobile-error').style.display = 'block';
+                document.getElementById('cf-user-mobile').classList.add('error');
+                hasError = true;
+            }
+
+            if (email && !validateEmail(email)) {
+                document.getElementById('cf-email-error').style.display = 'block';
+                document.getElementById('cf-user-email').classList.add('error');
+                hasError = true;
+            }
+
+            if (hasError) return;
+
+            // Generate session ID
+            sessionId = generateSessionId();
+
+            try {
+                // Save user info
+                const response = await fetch(`${API_BASE_URL}/user-info`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, mobile, email, session_id: sessionId })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Hide form, show chat
+                    document.getElementById('cf-user-form').style.display = 'none';
+                    document.getElementById('cf-chat-container').classList.add('active');
+                    
+                    // Set welcome time
+                    document.getElementById('cf-welcome-time').textContent = new Date().toLocaleTimeString('en-US', { 
+                        hour: '2-digit', 
+                        minute: '2-digit' 
+                    });
+
+                    // Add personalized welcome message
+                    const chatbox = document.getElementById('cf-chatbox');
+                    const welcomeMsg = document.createElement('div');
+                    welcomeMsg.className = 'cf-message bot';
+                    welcomeMsg.innerHTML = `
+                        <div class="cf-message-content">
+                            Nice to meet you, ${name}! 😊 How can I help you today?
+                            <div class="cf-timestamp">${new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}</div>
+                        </div>
+                    `;
+                    chatbox.appendChild(welcomeMsg);
+                    scrollToBottom();
+                }
+            } catch (error) {
+                alert('Error connecting to server. Please try again.');
+            }
+        }
+
+        // Scroll to bottom
+        function scrollToBottom() {
+            const chatbox = document.getElementById('cf-chatbox');
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+
+        // Send message
+        async function sendMessage() {
+            const input = document.getElementById('cf-msg');
+            const text = input.value.trim();
+            
+            if (!text) return;
+
+            const chatbox = document.getElementById('cf-chatbox');
+            const timestamp = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'cf-message user';
+            userMsg.innerHTML = `
+                <div class="cf-message-content">
+                    ${text}
+                    <div class="cf-timestamp">${timestamp}</div>
+                </div>
+            `;
+            chatbox.appendChild(userMsg);
+            input.value = '';
+            scrollToBottom();
+
+            // Show typing indicator
+            const typingIndicator = document.getElementById('cf-typing-indicator');
+            typingIndicator.classList.add('active');
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/chat`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: text, session_id: sessionId })
+                });
+
+                const data = await response.json();
+                
+                setTimeout(() => {
+                    typingIndicator.classList.remove('active');
+                    
+                    const botMsg = document.createElement('div');
+                    botMsg.className = 'cf-message bot';
+                    botMsg.innerHTML = `
+                        <div class="cf-message-content">
+                            ${data.reply}
+                            <div class="cf-timestamp">${new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}</div>
+                            <div class="cf-feedback-buttons">
+                                <button class="cf-feedback-btn" onclick="sendFeedback(${data.conversation_id}, 'positive', this)">
+                                    👍 Helpful
+                                </button>
+                                <button class="cf-feedback-btn" onclick="sendFeedback(${data.conversation_id}, 'negative', this)">
+                                    👎 Not Helpful
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    chatbox.appendChild(botMsg);
+                    scrollToBottom();
+                }, 800);
+
+            } catch (error) {
+                typingIndicator.classList.remove('active');
+                alert('Error connecting to server. Please try again.');
+            }
+        }
+
+        // Send feedback
+        async function sendFeedback(conversationId, feedbackType, button) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/feedback`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        conversation_id: conversationId, 
+                        feedback_type: feedbackType 
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    button.classList.add('selected');
+                    const buttons = button.parentElement.querySelectorAll('.cf-feedback-btn');
+                    buttons.forEach(btn => btn.disabled = true);
+                    buttons.forEach(btn => btn.style.cursor = 'not-allowed');
+                }
+            } catch (error) {
+                console.error('Feedback error:', error);
+            }
+        }
+
+        // Enter key support
+        document.addEventListener('DOMContentLoaded', function() {
+            const input = document.getElementById('cf-msg');
+            if (input) {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendMessage();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
