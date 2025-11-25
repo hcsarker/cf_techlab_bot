@@ -3,258 +3,325 @@
     {
       "tag": "greeting",
       "patterns": [
-        "hello",
-        "hi",
-        "hey",
-        "assalamualaikum",
-        "salam",
-        "good morning",
-        "good evening",
-        "Namaskar",
-        "Adab",
-        "kemon acho",
-        "how are you",
-        "whats up"
+        "hello", "hi", "hey", "assalamualaikum", "salam", "good morning", "good evening", "good afternoon", "good night",
+        "Namaskar", "Adab", "kemon acho", "how are you", "whats up", "wassup", "sup", "howdy", "greetings",
+        "yo", "hola", "bonjour", "ciao", "aloha", "shalom", "namaste", "salut", "hallo", "privet",
+        "kemon achen", "kibhabe achen", "kamon asen", "apni kemon", "tumi kemon", "ki obostha",
+        "valo acho", "valo achen", "how r u", "how r you", "how do you do", "nice to meet you",
+        "pleased to meet you", "good to see you", "long time no see", "whats going on", "whats new",
+        "whats happening", "how have you been", "how you doing", "hows it going", "hows everything",
+        "hope youre well", "hope all is well", "hows your day", "hows life", "what's good",
+        "ki hocche", "ki khobor", "kemon cholche", "sob thik", "bhalo to", "kire", "ki re",
+        "eyi", "hello there", "hi there", "hey there", "greetings friend", "top of the morning",
+        "whats crackin", "whats cookin", "hows tricks", "alright", "you okay", "you alright",
+        "koi gele", "kothai chhile", "kothay accho", "oye", "are bhai", "bro", "dude",
+        "mate", "buddy", "pal", "amigo", "hermano", "mon ami", "mein freund"
       ],
       "responses": [
         "Hello! How can I assist you today?",
         "Assalamualaikum! How may I help you?",
-        "Hi there! Welcome to CF TechLab. What can I do for you?"
+        "Hi there! Welcome to CF TechLab. What can I do for you?",
+        "Greetings! I'm here to answer your questions about CF TechLab.",
+        "Hey! Great to have you here. How can I help?",
+        "Salam! Apnake CF TechLab e welcome. Ki help dorkar?",
+        "Good to see you! What brings you here today?",
+        "Namaskar! How may I be of service?",
+        "Hello friend! Ready to discuss your project?",
+        "Hi! I'm your CF TechLab assistant. Fire away with your questions!"
       ]
     },
     {
       "tag": "services",
       "patterns": [
-        "What services do you provide?",
-        "Apnara ki service den?",
-        "services",
-        "ki ki service ache",
-        "techlab services",
-        "what do you offer",
-        "apnader service list",
-        "service list",
-        "what can you do"
+        "What services do you provide?", "Apnara ki service den?", "services", "ki ki service ache", "techlab services",
+        "what do you offer", "apnader service list", "service list", "what can you do", "your services",
+        "list of services", "service offerings", "what services", "all services", "available services",
+        "kon kon service", "ki kaj koren", "apnara ki koren", "what work you do", "what is your work",
+        "tell me about services", "describe your services", "service details", "full service list",
+        "complete services", "amader jonno ki korte paren", "what can you make", "what you build",
+        "apnara banate paren", "development services", "software services", "web services",
+        "mobile services", "app services", "website services", "IT services", "tech services",
+        "digital services", "online services", "programming services", "coding services",
+        "design services", "consultation services", "support services", "maintenance services",
+        "cloud services", "database services", "backend services", "frontend services",
+        "full stack services", "ecommerce services", "business solutions", "enterprise solutions",
+        "startup services", "custom development", "bespoke solutions", "tailor made solutions",
+        "personalized services", "specialized services", "professional services", "expert services",
+        "amra ki korte pari", "apnader kaj ki", "kon dhoron er kaj", "service type",
+        "categories", "service categories", "areas of expertise", "what you specialize in",
+        "core services", "main services", "primary services", "key services", "top services",
+        "best services", "popular services", "most requested services", "trending services"
       ],
       "responses": [
-        "We provide: 🔹 Custom Software Development 🔹 Website & Web App Development 🔹 Mobile App Development 🔹 IT Consulting 🔹 Technical Support & Maintenance 🔹 Cloud Solutions 🔹 Database Management",
-        "Amader services: Software development, website design & development, mobile apps, IT consulting, cloud solutions ebong technical support."
+        "We provide: 🔹 Custom Software Development 🔹 Website & Web App Development 🔹 Mobile App Development 🔹 IT Consulting 🔹 Technical Support & Maintenance 🔹 Cloud Solutions 🔹 Database Management 🔹 E-commerce Solutions 🔹 API Development 🔹 UI/UX Design",
+        "Amader services: Software development, website design & development, mobile apps, IT consulting, cloud solutions, database management, e-commerce, API development ebong technical support.",
+        "CF TechLab offers comprehensive digital solutions including web development, mobile apps, custom software, IT consulting, cloud migration, database optimization, and 24/7 technical support.",
+        "We specialize in: Full-stack development, React/Angular frontend, Node.js/Python backend, iOS/Android apps, WordPress/Shopify, DevOps, cybersecurity, and data analytics.",
+        "Amra provide kori: Website banano, mobile app development, software solutions, IT consulting, cloud hosting, technical support, e-commerce setup, ebong digital marketing."
       ]
     },
     {
       "tag": "pricing",
       "patterns": [
-        "service charge koto",
-        "price koto",
-        "cost",
-        "how much is the service cost",
-        "rate kemon",
-        "budget",
-        "dam koto",
-        "pricing",
-        "quotation"
+        "service charge koto", "price koto", "cost", "how much is the service cost", "rate kemon", "budget",
+        "dam koto", "pricing", "quotation", "quote", "estimate", "pricing details", "cost estimate",
+        "how much", "what is the price", "what is the cost", "apnader rate", "taka koto lagbe",
+        "khoroch koto", "expenses", "fees", "charges", "service fees", "development cost",
+        "project cost", "total cost", "overall cost", "full price", "complete price",
+        "package price", "pricing packages", "pricing plans", "price list", "rate card",
+        "koto taka", "dam kemon", "expensive", "cheap", "affordable", "reasonable",
+        "shosta", "dordam koto", "negotiable", "discount", "offer", "special price",
+        "website banate koto taka", "app banate koto", "software er dam", "development charge",
+        "hourly rate", "fixed price", "monthly cost", "annual cost", "one time cost",
+        "recurring cost", "subscription", "license fee", "setup fee", "initial cost",
+        "maintenance cost", "support cost", "hosting cost", "domain cost", "total expense",
+        "investment required", "budget needed", "money needed", "koto invest korte hobe",
+        "minimum cost", "maximum cost", "starting price", "base price", "standard price",
+        "premium price", "enterprise pricing", "startup pricing", "small business pricing"
       ],
       "responses": [
         "Our pricing starts from 5,000 BDT for basic projects. For custom solutions, we provide detailed quotations based on requirements. Contact us for a free consultation!",
-        "Service charge project requirements er upor depend kore. Basic website 5,000 BDT theke shuru. Custom quotation er jonno amader contact korun."
+        "Service charge project requirements er upor depend kore. Basic website 5,000 BDT theke shuru. Custom quotation er jonno amader contact korun.",
+        "💰 Pricing: Basic Website: 5K-15K BDT | E-commerce: 20K-50K BDT | Mobile App: 30K-100K BDT | Custom Software: Based on scope. Free consultation & quote!",
+        "Amader rate flexible. Simple landing page 5K, business website 15K-30K, full e-commerce 40K+ BDT. Apnar budget discuss kore best solution debo.",
+        "We offer competitive pricing with quality guaranteed. Share your requirements and budget - we'll create a customized package that fits your needs perfectly!"
       ]
     },
     {
       "tag": "contact",
       "patterns": [
-        "How can I contact?",
-        "contact info",
-        "kivabe jogajog korbo",
-        "phone number",
-        "email",
-        "reach you",
-        "get in touch",
-        "contact details",
-        "phone",
-        "mail",
-        "address"
+        "How can I contact?", "contact info", "kivabe jogajog korbo", "phone number", "email", "reach you",
+        "get in touch", "contact details", "phone", "mail", "address", "call you", "email address",
+        "mobile number", "contact number", "telephone", "hotline", "helpline", "customer service",
+        "support contact", "business contact", "office contact", "reach out", "connect with you",
+        "communicate", "get hold of", "apnader sathe kivabe", "phone koto", "number koto",
+        "email ki", "contact korar upay", "jogajog er poddoti", "communication", "correspondence",
+        "apnader number", "apnader email", "apnader phone", "message kobo kivabe", "SMS",
+        "WhatsApp", "messenger", "social media", "Facebook", "Instagram", "LinkedIn", "Twitter",
+        "telegram", "viber", "imo", "line", "wechat", "skype", "zoom", "meeting", "appointment",
+        "schedule call", "book consultation", "talk to someone", "speak with team", "discussion",
+        "query", "inquiry", "information request", "more info", "further details", "dhorar upay",
+        "kotha bolbo kivabe", "dakbo kivabe", "message pathabo", "email pathabo", "call dibo"
       ],
       "responses": [
-        "📞 Phone: +8801642948324\n📧 Email: techlab.cf@gmail.com\n🌐 Website: https://cftechlab.hcsarker.me/\nWe're available 24/7 for inquiries!",
-        "Amader sathe jogajog korun:\nPhone: +8801642948324\nEmail: techlab.cf@gmail.com"
+        "📞 Phone: +8801642948324\n📧 Email: techlab.cf@gmail.com\n🌐 Website: https://cftechlab.hcsarker.me/\n💬 WhatsApp/Telegram: +8801642948324\nWe're available 24/7 for inquiries!",
+        "Amader sathe jogajog korun:\n📱 Phone/WhatsApp: +8801642948324\n✉️ Email: techlab.cf@gmail.com\n🌐 Website: https://cftechlab.hcsarker.me/",
+        "Contact CF TechLab: Call/WhatsApp: +8801642948324 | Email: techlab.cf@gmail.com | Available 24/7 | Free consultation!",
+        "Get in touch: 📞 +8801642948324 📧 techlab.cf@gmail.com 🌐 https://cftechlab.hcsarker.me/ - Amra shomoye reply dei!"
       ]
     },
     {
       "tag": "office_hours",
       "patterns": [
-        "office hours",
-        "kakhon khola thake",
-        "working hours",
-        "office time",
-        "when are you open",
-        "kaj er time",
-        "business hours"
+        "office hours", "kakhon khola thake", "working hours", "office time", "when are you open", "kaj er time", "business hours",
+        "kakhon khule", "office kakhon khola", "kaj er somoy", "duty time", "service time", "available when",
+        "open time", "closing time", "bondho kakhon", "off day", "holiday", "weekend", "working days",
+        "office schedule", "timing", "shift", "duty hours", "operational hours", "service hours",
+        "24/7", "always open", "round the clock", "24 hours", "shob somoy", "shobar somoy",
+        "raat e khola", "night time", "late night", "early morning", "shokal belay", "bikal belay",
+        "appointment time", "visit time", "meeting time", "consultation hours", "customer service hours"
       ],
       "responses": [
         "We are available 24/7 online! For physical office visits, please schedule an appointment.",
-        "Amra 24/7 online available. Office visit er jonno appointment nin."
+        "Amra 24/7 online available. Office visit er jonno appointment nin.",
+        "🕐 Available 24/7 for online inquiries! Office meetings by appointment only.",
+        "Amra round the clock available - shobar somoy message korun!"
       ]
     },
     {
       "tag": "location",
       "patterns": [
-        "office location",
-        "kothay achen",
-        "address",
-        "office address",
-        "where are you",
-        "apnader location",
-        "office kothay"
+        "office location", "kothay achen", "address", "office address", "where are you", "apnader location", "office kothay",
+        "location", "place", "situated where", "based where", "headquarter", "head office", "branch",
+        "lokeshen", "thikana", "office er address", "kothay pabo", "kon jaygay", "dhaka te achen",
+        "city", "area", "region", "country", "bangladesh e kothay", "exactly where", "physical location",
+        "visit office", "come to office", "office dekhte chai", "meet in person", "face to face",
+        "remote", "online", "virtual", "work from home", "ghore boshe", "anywhere", "location free",
+        "nationwide", "all over bangladesh", "puro deshe", "sorbotro", "everywhere", "globally"
       ],
       "responses": [
         "We operate remotely to serve clients nationwide. Visit our website: https://cftechlab.hcsarker.me/ for more details.",
-        "Amra remote-based, puro Bangladesh e service dei. Details: https://cftechlab.hcsarker.me/"
+        "Amra remote-based, puro Bangladesh e service dei. Details: https://cftechlab.hcsarker.me/",
+        "📍 Remote-first company serving all of Bangladesh & beyond! Online meetings preferred.",
+        "Amader office remote - je kono jaygay theke apnake service dite pari!"
       ]
     },
     {
       "tag": "team",
       "patterns": [
-        "who are you",
-        "team",
-        "apnara ke",
-        "founder",
-        "about your team",
-        "team members",
-        "developers"
+        "who are you", "team", "apnara ke", "founder", "about your team", "team members", "developers",
+        "about you", "your company", "company info", "about cf techlab", "who is cf techlab",
+        "apnader porichoy", "apnara kon", "company details", "business details", "organization",
+        "team size", "how many members", "koto jon", "staff", "employees", "workforce",
+        "expertise", "experience", "skills", "qualifications", "background", "history",
+        "ceo", "manager", "lead developer", "senior dev", "project manager", "designer",
+        "who founded", "established when", "kobe shuru", "company age", "years in business",
+        "about company", "company profile", "corporate info", "business profile"
       ],
       "responses": [
         "CF TechLab is a team of experienced developers and IT professionals dedicated to delivering quality solutions. Led by innovative tech enthusiasts!",
-        "Amra experienced developers ebong IT professionals er team. Quality solution provide kora amader goal."
+        "Amra experienced developers ebong IT professionals er team. Quality solution provide kora amader goal.",
+        "👥 CF TechLab: Expert team of full-stack developers, designers, and IT consultants with 5+ years experience in building innovative solutions.",
+        "Amader team e ache experienced Python, JavaScript, React, Node.js developers - sobai passionate ebong skilled!"
       ]
     },
     {
       "tag": "technologies",
       "patterns": [
-        "what technologies",
-        "tech stack",
-        "programming languages",
-        "kon technology use koren",
-        "frameworks",
-        "tools",
-        "languages you use"
+        "what technologies", "tech stack", "programming languages", "kon technology use koren", "frameworks", "tools", "languages you use",
+        "which language", "coding language", "programming", "software", "platform", "technology",
+        "ki diye banaben", "kon language", "python", "javascript", "java", "php", "ruby",
+        "react", "angular", "vue", "node", "django", "flask", "laravel", "spring",
+        "database", "mongodb", "mysql", "postgresql", "oracle", "sql", "nosql",
+        "cloud", "aws", "azure", "google cloud", "hosting", "server", "devops",
+        "docker", "kubernetes", "ci cd", "git", "github", "version control",
+        "frontend", "backend", "full stack", "mobile", "android", "ios", "flutter",
+        "react native", "kotlin", "swift", "ai", "ml", "machine learning", "tensorflow",
+        "data science", "analytics", "big data", "blockchain", "iot", "api"
       ],
       "responses": [
         "We work with: Python, JavaScript, React, Node.js, Flask, Django, TensorFlow, MongoDB, MySQL, Docker, AWS, and more!",
-        "Amra Python, JavaScript, React, Flask, Django, TensorFlow, MongoDB, MySQL ebong modern technologies use kori."
+        "Amra Python, JavaScript, React, Flask, Django, TensorFlow, MongoDB, MySQL ebong modern technologies use kori.",
+        "💻 Tech Stack: Frontend: React, Angular, Vue | Backend: Node.js, Python, PHP | Mobile: React Native, Flutter | Cloud: AWS, Azure | AI/ML: TensorFlow, PyTorch",
+        "Amra latest ebong proven technologies use kori - apnar project er jonno best fit select kore implement kori!"
       ]
     },
     {
       "tag": "payment",
       "patterns": [
-        "payment methods",
-        "kivabe payment korbo",
-        "payment process",
-        "how to pay",
-        "payment options",
-        "bkash",
-        "nagad",
-        "bank transfer"
+        "payment methods", "kivabe payment korbo", "payment process", "how to pay", "payment options", "bkash", "nagad", "bank transfer",
+        "rocket", "upay", "sure cash", "mobile banking", "online payment", "digital payment",
+        "taka dibo kivabe", "payment kivabe", "pay korar upay", "transaction", "money transfer",
+        "cash", "card", "credit card", "debit card", "visa", "mastercard", "paypal",
+        "bank", "cheque", "check", "wire transfer", "eft", "neft", "rtgs", "imps",
+        "installment", "kisti", "partial payment", "advance", "advance payment", "advance koto",
+        "full payment", "puro taka", "milestone payment", "phase wise payment", "after delivery",
+        "payment terms", "payment condition", "payment schedule", "when to pay", "kakhon dite hobe",
+        "invoice", "receipt", "bill", "voucher", "payment proof", "transaction id"
       ],
       "responses": [
         "We accept: 💳 Bkash, Nagad, Rocket 🏦 Bank Transfer 💰 Cash. Payment details will be shared after project confirmation.",
-        "Payment options: Bkash, Nagad, Rocket, Bank Transfer ebong Cash. Project confirm howar por details dewa hobe."
+        "Payment options: Bkash, Nagad, Rocket, Bank Transfer ebong Cash. Project confirm howar por details dewa hobe.",
+        "💰 Payment: Bkash/Nagad/Rocket (instant) | Bank Transfer | Cash | Flexible installments available for large projects!",
+        "Taka deoar jonno: Mobile banking (Bkash/Nagad preferred), bank transfer ba cash - je bhabe shubidhajanak!"
       ]
     },
     {
       "tag": "portfolio",
       "patterns": [
-        "previous work",
-        "portfolio",
-        "examples",
-        "ager kaj",
-        "projects",
-        "your work",
-        "sample projects",
-        "case studies"
+        "previous work", "portfolio", "examples", "ager kaj", "projects", "your work", "sample projects", "case studies",
+        "past projects", "completed projects", "successful projects", "client projects", "showcase",
+        "ki kaj korechen", "kemon kaj", "kaj er namuna", "demo", "live projects", "running projects",
+        "website examples", "app examples", "software examples", "dekhao", "dekhte chai",
+        "screenshots", "preview", "sample work", "work samples", "achievements", "success stories",
+        "reference", "client list", "customer list", "kon kon client", "big clients",
+        "e-commerce", "dashboard", "chatbot", "mobile app", "web app", "cms", "erp",
+        "recent work", "latest projects", "new projects", "best work", "top projects"
       ],
       "responses": [
         "Check out our portfolio at https://cftechlab.hcsarker.me/ - We've delivered 50+ projects including e-commerce, dashboards, AI chatbots, and mobile apps!",
-        "Amader portfolio: https://cftechlab.hcsarker.me/ - 50+ projects complete korechi including websites, apps ebong AI solutions."
+        "Amader portfolio: https://cftechlab.hcsarker.me/ - 50+ projects complete korechi including websites, apps ebong AI solutions.",
+        "🎯 Portfolio: 50+ projects delivered | E-commerce stores, SaaS dashboards, AI chatbots, mobile apps, CRM systems | Visit: https://cftechlab.hcsarker.me/",
+        "Amra baniyechi: E-commerce sites, booking systems, school management, inventory software, chatbots - portfolio dekhun website e!"
       ]
     },
     {
       "tag": "testimonials",
       "patterns": [
-        "reviews",
-        "client feedback",
-        "testimonials",
-        "ki bole clients",
-        "ratings",
-        "customer reviews"
+        "reviews", "client feedback", "testimonials", "ki bole clients", "ratings", "customer reviews",
+        "client reviews", "customer feedback", "what clients say", "client satisfaction", "happy clients",
+        "rating koto", "stars", "5 star", "reputation", "credibility", "trust", "bharoshajoggo",
+        "customer satisfaction", "client opinion", "feedback", "comments", "appreciation",
+        "success rate", "delivery record", "track record", "performance", "quality rating",
+        "reference client", "client speak", "word of mouth", "recommendation", "suggest kore ke",
+        "google reviews", "facebook reviews", "online reviews", "public opinion"
       ],
       "responses": [
         "Our clients rate us 4.9/5! They appreciate our professionalism, timely delivery, and quality work. Visit our website for detailed reviews.",
-        "Amader clients der rating 4.9/5! Professional service ebong quality work er jonno amra porichiyo."
+        "Amader clients der rating 4.9/5! Professional service ebong quality work er jonno amra porichiyo.",
+        "⭐ 4.9/5 Rating | 95% client retention | Testimonials: 'Best service!', 'On-time delivery', 'Excellent support' - Check reviews on our website!",
+        "Client ra khub khushi amader kaj niye - timely delivery, professional behavior ebong quality guarantee!"
       ]
     },
     {
       "tag": "timeline",
       "patterns": [
-        "how long",
-        "project duration",
-        "koto din lagbe",
-        "timeline",
-        "delivery time",
-        "when will it be done",
-        "koto time lagbe"
+        "how long", "project duration", "koto din lagbe", "timeline", "delivery time", "when will it be done", "koto time lagbe",
+        "time frame", "completion time", "deadline", "shesh kobe hobe", "kobe pabo", "kobe deben",
+        "fast delivery", "quick turnaround", "urgent", "rush", "joldi dorkar", "emergency",
+        "days", "weeks", "months", "din", "mash", "soptaho", "how many days", "koto din",
+        "project time", "development time", "design time", "testing time", "launch time",
+        "eta koto somoy", "eta lagbe koto", "eta nibe koto", "duration", "period",
+        "schedule", "plan", "roadmap", "phases", "milestones", "sprint", "iteration",
+        "minimum time", "maximum time", "average time", "typical duration", "standard time"
       ],
       "responses": [
         "Project timeline depends on complexity. Simple websites: 7-10 days. Complex apps: 4-8 weeks. We provide detailed timeline estimates after requirements discussion.",
-        "Timeline project er upor depend kore. Simple website 7-10 din. Complex app 4-8 weeks. Requirements discuss korar por exact timeline debo."
+        "Timeline project er upor depend kore. Simple website 7-10 din. Complex app 4-8 weeks. Requirements discuss korar por exact timeline debo.",
+        "⏱️ Timeline: Landing page (3-5 days) | Business site (7-10 days) | E-commerce (15-20 days) | Mobile app (4-8 weeks) | Custom software (varies)",
+        "Shomoy lagbe project size onujayi. Simple kaj 1 week, medium 2-3 weeks, complex 1-2 months. Joldi hole extra charge e fast delivery!"
       ]
     },
     {
       "tag": "support",
       "patterns": [
-        "support",
-        "maintenance",
-        "after service",
-        "help",
-        "project er por ki korben",
-        "technical support",
-        "bug fix"
+        "support", "maintenance", "after service", "help", "project er por ki korben", "technical support", "bug fix",
+        "after sales", "post delivery", "ongoing support", "continuous support", "24/7 support",
+        "help desk", "customer care", "assist", "assistance", "shohaijogita", "sahajjo",
+        "problem solve", "issue", "error", "bug", "kharap hoye gele", "bhul hole",
+        "update", "upgrade", "modification", "changes", "edit", "poriborton", "change korte hobe",
+        "warranty", "guarantee", "free support", "paid support", "support package",
+        "amc", "annual maintenance", "monthly support", "yearly support", "contract",
+        "emergency support", "urgent help", "immediate help", "ekhoni dorkar",
+        "backup", "recovery", "restore", "data loss", "crash", "down", "not working"
       ],
       "responses": [
         "We provide 3 months free support after project delivery! This includes bug fixes, minor updates, and technical assistance.",
-        "Project delivery er por 3 months free support dei! Bug fix, minor updates ebong technical help included."
+        "Project delivery er por 3 months free support dei! Bug fix, minor updates ebong technical help included.",
+        "🛠️ Support: 3 months FREE (bugs, updates, tech help) | Extended support plans available | 24/7 emergency support for critical issues!",
+        "Amra 3 mash free support dei - bug fix, choto update, technical problem solve - shob kichu! Er por monthly AMC available."
       ]
     },
     {
       "tag": "custom_project",
       "patterns": [
-        "custom project",
-        "amar ekta idea ache",
-        "I have an idea",
-        "can you build",
-        "amader jonno banaben",
-        "custom solution",
-        "specific requirements"
+        "custom project", "amar ekta idea ache", "I have an idea", "can you build", "amader jonno banaben", "custom solution", "specific requirements",
+        "bespoke", "tailor made", "personalized", "unique", "special", "bishesh", "alada",
+        "amar requirement", "custom need", "specific need", "particular requirement",
+        "banate parben", "develop korte parben", "create korte parben", "make korte parben",
+        "new project", "start from scratch", "shuru theke", "notun kore", "fresh project",
+        "unique idea", "innovative", "different", "alada kichu", "notun kichu",
+        "consultation", "discuss", "alochona", "kotha bolte chai", "plan korte chai",
+        "feasibility", "possible", "can you do", "korte parben", "hobe", "possibility",
+        "startup idea", "business idea", "project idea", "concept", "vision", "dream project"
       ],
       "responses": [
         "Yes! We love working on custom projects. Share your requirements and we'll provide a detailed proposal with timeline and cost estimates.",
-        "Definitely! Apnar requirements share korun, amra detailed proposal, timeline ebong cost estimate debo."
+        "Definitely! Apnar requirements share korun, amra detailed proposal, timeline ebong cost estimate debo.",
+        "🚀 Absolutely! We specialize in custom solutions. Share your idea - we'll provide FREE consultation, feasibility analysis, and detailed proposal!",
+        "Amra custom project e expert! Apnar idea bolen, amra sheta reality banabo - free consultation + detailed plan!"
       ]
     },
     {
       "tag": "goodbye",
       "patterns": [
-        "bye",
-        "goodbye",
-        "thank you",
-        "see you",
-        "thanks",
-        "dhonnobad",
-        "okay",
-        "thik ache"
+        "bye", "goodbye", "thank you", "see you", "thanks", "dhonnobad", "okay", "thik ache",
+        "bye bye", "tata", "take care", "later", "see ya", "catch you later", "until next time",
+        "gotta go", "gtg", "cya", "peace", "peace out", "adios", "au revoir", "ciao",
+        "thanks a lot", "thank you so much", "onek dhonnobad", "khub dhonnobad", "shukriya",
+        "appreciate it", "helpful", "great", "awesome", "perfect", "excellent", "bhalo",
+        "done", "finished", "shesh", "hoyeche", "all set", "thats all", "bass",
+        "enough", "sufficient", "jotheshto", "ar dorkar nai", "no more questions",
+        "alright", "cool", "ok thanks", "got it", "understood", "bujhechi", "clear",
+        "will contact", "call korbo", "message korbo", "talk later", "pore kotha hobe"
       ],
       "responses": [
         "Thank you for contacting CF TechLab! Have a great day! 🚀",
         "Goodbye! We're always here to help. Visit us at https://cftechlab.hcsarker.me/",
-        "Dhonnobad! Amra always available. Feel free to reach out anytime!"
+        "Dhonnobad! Amra always available. Feel free to reach out anytime!",
+        "Thanks for chatting! Contact us anytime at +8801642948324 or techlab.cf@gmail.com",
+        "Bye! We're just a message away - 24/7 available for your project needs! 💼",
+        "Pore dekha hobe! Kono question thakle nirbikaye jogajog korun. Dhonnobad! 🙏"
       ]
     }
   ]

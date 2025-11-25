@@ -34,3 +34,28 @@
 2025-11-25 00:17:30,067 - INFO - Predicted tag: office_hours, Confidence: 0.99
 2025-11-25 00:17:30,068 - INFO - 127.0.0.1 - - [25/Nov/2025 00:17:30] "POST /chat HTTP/1.1" 200 -
 2025-11-25 00:17:36,127 - INFO - 127.0.0.1 - - [25/Nov/2025 00:17:36] "GET /?id=fb9ef9d5-e197-46d0-be46-2db0496215b8&vscodeBrowserReqId=1764008256122 HTTP/1.1" 200 -
+2025-11-26 00:11:14,388 - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-11-26 00:11:14,415 - INFO - Model and data loaded successfully
+2025-11-26 00:11:14,418 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.112:5000
+2025-11-26 00:11:14,418 - INFO - [33mPress CTRL+C to quit[0m
+2025-11-26 00:11:28,811 - INFO - 127.0.0.1 - - [26/Nov/2025 00:11:28] "GET / HTTP/1.1" 200 -
+2025-11-26 00:11:29,604 - INFO - 127.0.0.1 - - [26/Nov/2025 00:11:29] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-26 00:11:42,256 - INFO - Received message: hi
+2025-11-26 00:11:42,699 - INFO - Predicted tag: greeting, Confidence: 0.98
+2025-11-26 00:11:42,701 - INFO - 127.0.0.1 - - [26/Nov/2025 00:11:42] "POST /chat HTTP/1.1" 200 -
+2025-11-26 00:28:53,585 - INFO - Received message: hello
+2025-11-26 00:28:53,719 - INFO - Predicted tag: greeting, Confidence: 0.98
+2025-11-26 00:28:53,720 - INFO - 127.0.0.1 - - [26/Nov/2025 00:28:53] "POST /chat HTTP/1.1" 200 -
+2025-11-26 00:28:53,736 - INFO - Received message: apnara ki service den?
+2025-11-26 00:28:53,883 - INFO - Predicted tag: services, Confidence: 0.99
+2025-11-26 00:28:53,884 - INFO - 127.0.0.1 - - [26/Nov/2025 00:28:53] "POST /chat HTTP/1.1" 200 -
+2025-11-26 00:28:53,896 - INFO - Received message: koto taka lagbe?
+2025-11-26 00:28:54,021 - INFO - Predicted tag: timeline, Confidence: 0.99
+2025-11-26 00:28:54,022 - INFO - 127.0.0.1 - - [26/Nov/2025 00:28:54] "POST /chat HTTP/1.1" 200 -
+2025-11-26 00:28:54,032 - INFO - Received message: emergency support ache?
+2025-11-26 00:28:54,162 - INFO - Predicted tag: greeting, Confidence: 0.50
+2025-11-26 00:28:54,162 - WARNING - Low confidence (0.50) for message: emergency support ache?
+2025-11-26 00:28:54,162 - INFO - 127.0.0.1 - - [26/Nov/2025 00:28:54] "POST /chat HTTP/1.1" 200 -
