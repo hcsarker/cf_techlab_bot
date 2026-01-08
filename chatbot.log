@@ -672,3 +672,15 @@
 2025-11-26 03:27:29,196 - INFO - Received message: service
 2025-11-26 03:27:29,270 - INFO - Predicted tag: services, Confidence: 1.00
 2025-11-26 03:27:29,282 - INFO - 127.0.0.1 - - [26/Nov/2025 03:27:29] "POST /chat HTTP/1.1" 200 -
+2025-11-26 10:50:39,762 - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-11-26 10:50:39,781 - INFO - Model and data loaded successfully
+2025-11-26 10:50:39,787 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.27.38.202:5000
+2025-11-26 10:50:39,787 - INFO - [33mPress CTRL+C to quit[0m
+2025-11-26 10:50:47,057 - INFO - 127.0.0.1 - - [26/Nov/2025 10:50:47] "[36mGET / HTTP/1.1[0m" 304 -
+2025-11-26 10:50:47,739 - INFO - 127.0.0.1 - - [26/Nov/2025 10:50:47] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-26 10:50:56,511 - INFO - Received message: hello
+2025-11-26 10:50:56,832 - INFO - Predicted tag: greeting, Confidence: 1.00
+2025-11-26 10:50:56,835 - INFO - 127.0.0.1 - - [26/Nov/2025 10:50:56] "POST /chat HTTP/1.1" 200 -
