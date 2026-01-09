@@ -236,7 +236,7 @@
             <p class="subtitle">Add AI Chatbot to <strong>cftechlab.vercel.app</strong></p>
             
             <div class="success">
-                <strong>✨ Perfect for Vercel!</strong> Deploy chatbot on Railway.app (free) and embed in your Vercel website
+                <strong>✨ Perfect for Vercel!</strong> Deploy chatbot on Render.com (free) and embed in your Vercel website
             </div>
         </div>
 
@@ -244,14 +244,13 @@
             <h2>📋 Quick 3-Step Process</h2>
             
             <div class="step">
-                <h3>Step 1: Deploy Chatbot on Railway.app (Free)</h3>
+                <h3>Step 1: Deploy Chatbot on Render.com (Free)</h3>
                 <ol>
-                    <li>Visit <a href="https://railway.app" target="_blank">Railway.app</a></li>
+                    <li>Visit <a href="https://render.com" target="_blank">Render.com</a></li>
                     <li>Sign in with GitHub</li>
-                    <li>New Project → Deploy from GitHub</li>
-                    <li>Select: <code>hcsarker/cf_techlab_bot</code></li>
-                    <li>Railway auto-deploys (2-3 minutes)</li>
-                    <li>Copy your Railway URL (like: <code>xyz.up.railway.app</code>)</li>
+                    <li>New → Blueprint → select this repo (or Web Service manual setup)</li>
+                    <li>Render builds and deploys (2-5 minutes)</li>
+                    <li>Copy your Render URL (like: <code>your-service.onrender.com</code>)</li>
                 </ol>
             </div>
             
@@ -281,12 +280,12 @@
                 <p>Add this code before <code>&lt;/body&gt;</code> tag:</p>
                 
                 <div class="success">
-                    <strong>✅ Railway URL Added:</strong> <code>web-production-c764.up.railway.app</code> - Ready to copy!
+                    <strong>✅ Render URL Placeholder:</strong> <code>your-service.onrender.com</code> - Replace with your actual URL
                 </div>
                 
                 <textarea id="html-code" readonly><!-- CF TechLab AI Chatbot -->
 <iframe 
-    src="https://web-production-c764.up.railway.app/widget" 
+    src="https://your-service.onrender.com/widget" 
     style="position: fixed; bottom: 0; right: 0; width: 100%; height: 100%; border: none; z-index: 999999; pointer-events: none;"
     id="cf-chatbot-iframe">
 </iframe>
@@ -345,7 +344,7 @@ export default function Chatbot() {
   return (
     <iframe
       id="cf-chatbot-iframe"
-      src="https://web-production-c764.up.railway.app/widget"
+            src="https://your-service.onrender.com/widget"
       style={{
         position: 'fixed',
         bottom: 0,
@@ -415,7 +414,7 @@ export default function Chatbot() {
   return (
     <iframe
       id="cf-chatbot-iframe"
-      src="https://web-production-c764.up.railway.app/widget"
+            src="https://your-service.onrender.com/widget"
       style={{
         position: 'fixed',
         bottom: 0,
@@ -464,9 +463,9 @@ export default App;</textarea>
             
             <div class="checklist">
                 <label><input type="checkbox"> Push chatbot code to GitHub</label>
-                <label><input type="checkbox"> Deploy on Railway.app</label>
-                <label><input type="checkbox"> Copy Railway public URL</label>
-                <label><input type="checkbox"> Replace <code>YOUR-RAILWAY-URL</code> in code</label>
+                <label><input type="checkbox"> Deploy on Render.com</label>
+                <label><input type="checkbox"> Copy Render public URL</label>
+                <label><input type="checkbox"> Replace <code>your-service.onrender.com</code> in code</label>
                 <label><input type="checkbox"> Add code to Vercel project</label>
                 <label><input type="checkbox"> Test locally (<code>npm run dev</code>)</label>
                 <label><input type="checkbox"> Commit and push to GitHub</label>
@@ -481,11 +480,11 @@ export default App;</textarea>
         <div class="card">
             <h2>🧪 Test URLs</h2>
             
-            <p><strong>Your Railway URLs:</strong></p>
+            <p><strong>Your Render URLs:</strong></p>
             <ul>
-                <li>Widget: <a href="https://web-production-c764.up.railway.app/widget" target="_blank">https://web-production-c764.up.railway.app/widget</a></li>
-                <li>Admin Dashboard: <a href="https://web-production-c764.up.railway.app/admin" target="_blank">https://web-production-c764.up.railway.app/admin</a></li>
-                <li>Health Check: <a href="https://web-production-c764.up.railway.app/health" target="_blank">https://web-production-c764.up.railway.app/health</a></li>
+                <li>Widget: <a href="https://your-service.onrender.com/widget" target="_blank">https://your-service.onrender.com/widget</a></li>
+                <li>Admin Dashboard: <a href="https://your-service.onrender.com/admin" target="_blank">https://your-service.onrender.com/admin</a></li>
+                <li>Health Check: <a href="https://your-service.onrender.com/health" target="_blank">https://your-service.onrender.com/health</a></li>
             </ul>
             
             <p><strong>Your Vercel website:</strong></p>
@@ -527,7 +526,7 @@ export default App;</textarea>
         <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
             <h2 style="color: white;">🎉 Ready to Deploy!</h2>
             <p style="font-size: 18px; line-height: 1.8;">
-                1. Deploy chatbot on Railway.app (free)<br>
+                1. Deploy chatbot on Render.com (free)<br>
                 2. Copy embed code from above<br>
                 3. Add to your Vercel project<br>
                 4. Push to GitHub → Vercel auto-deploys<br>
