@@ -5,14 +5,13 @@ os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'  # Disable oneDNN messages
 
 from flask import Flask, request, jsonify, send_from_directory, render_template_string
 from flask_cors import CORS
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing.sequence import pad_sequences
 import numpy as np
 import pickle
 import json
 import random
 import logging
 from datetime import datetime
+import threading
 import database
 
 # Configure logging
@@ -42,15 +41,50 @@ CORS(app, resources={
 # Initialize database
 database.init_db()
 
-# Load model and data
+# Start a background preload of model/resources without blocking startup
+_preload_started = False
+
+def _background_preload():
+    global _preload_started
+    _preload_started = True
+    ok = load_resources()
+    if ok:
+        logging.info("Background preload completed successfully")
+    else:
+        logging.warning("Background preload failed; will retry on first /chat request")
+
 try:
-    model = load_model('chatbot_model.h5')
-    tokenizer, encoder = pickle.load(open('tokenizer.pkl', 'rb'))
-    data = json.load(open('data.json'))
-    logging.info("Model and data loaded successfully")
+    threading.Thread(target=_background_preload, daemon=True).start()
 except Exception as e:
-    logging.error(f"Error loading model/data: {str(e)}")
-    raise
+    logging.warning(f"Could not start background preload thread: {e}")
+
+# Lazy-load model and data to avoid startup failures on low-memory hosts
+model = None
+tokenizer = None
+encoder = None
+data = None
+pad_sequences = None
+_load_lock = threading.Lock()
+
+def load_resources():
+    global model, tokenizer, encoder, data, pad_sequences
+    if model is not None and tokenizer is not None and encoder is not None and data is not None and pad_sequences is not None:
+        return True
+    with _load_lock:
+        if model is not None and tokenizer is not None and encoder is not None and data is not None and pad_sequences is not None:
+            return True
+        try:
+            from tensorflow.keras.models import load_model as keras_load_model
+            from tensorflow.keras.preprocessing.sequence import pad_sequences as keras_pad_sequences
+            model = keras_load_model('chatbot_model.h5')
+            tokenizer, encoder = pickle.load(open('tokenizer.pkl', 'rb'))
+            data = json.load(open('data.json'))
+            pad_sequences = keras_pad_sequences
+            logging.info("Model and data loaded successfully (lazy)")
+            return True
+        except Exception as e:
+            logging.error(f"Error loading model/data lazily: {str(e)}")
+            return False
 
 @app.route('/')
 def index():
@@ -68,7 +102,8 @@ def health():
     return jsonify({
         'status': 'healthy',
         'timestamp': datetime.now().isoformat(),
-        'model_loaded': model is not None
+        'model_loaded': model is not None,
+        'preloading': _preload_started
     }), 200
 
 @app.route('/user-info', methods=['POST'])
@@ -102,6 +137,12 @@ def save_user_info_endpoint():
 def chat():
     """Handle chat messages with improved error handling and confidence threshold"""
     try:
+        # Ensure resources are loaded
+        if not load_resources():
+            return jsonify({
+                'error': 'Model not available',
+                'reply': 'Service is warming up. Please try again in a moment.'
+            }), 503
         # Validate request
         if not request.json or 'message' not in request.json:
             return jsonify({'error': 'Invalid request format'}), 400
