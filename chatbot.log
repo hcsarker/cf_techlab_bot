@@ -684,3 +684,70 @@
 2025-11-26 10:50:56,511 - INFO - Received message: hello
 2025-11-26 10:50:56,832 - INFO - Predicted tag: greeting, Confidence: 1.00
 2025-11-26 10:50:56,835 - INFO - 127.0.0.1 - - [26/Nov/2025 10:50:56] "POST /chat HTTP/1.1" 200 -
+2026-01-09 14:28:19,907 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.118:5000
+2026-01-09 14:28:19,908 - INFO - [33mPress CTRL+C to quit[0m
+2026-01-09 14:28:52,219 - INFO - 127.0.0.1 - - [09/Jan/2026 14:28:52] "GET / HTTP/1.1" 200 -
+2026-01-09 14:28:53,476 - INFO - 127.0.0.1 - - [09/Jan/2026 14:28:53] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-01-09 14:29:04,478 - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2026-01-09 14:29:04,516 - INFO - Model and data loaded successfully (lazy)
+2026-01-09 14:29:04,517 - INFO - Received message: hi
+2026-01-09 14:29:04,925 - INFO - Predicted tag: greeting, Confidence: 1.00
+2026-01-09 14:29:04,936 - INFO - 127.0.0.1 - - [09/Jan/2026 14:29:04] "POST /chat HTTP/1.1" 200 -
+2026-01-09 14:29:16,291 - INFO - Feedback received: positive for conversation 41
+2026-01-09 14:29:16,292 - INFO - 127.0.0.1 - - [09/Jan/2026 14:29:16] "POST /feedback HTTP/1.1" 200 -
+2026-01-09 14:29:21,075 - INFO - Received message: server?
+2026-01-09 14:29:21,205 - INFO - Predicted tag: technologies, Confidence: 1.00
+2026-01-09 14:29:21,218 - INFO - 127.0.0.1 - - [09/Jan/2026 14:29:21] "POST /chat HTTP/1.1" 200 -
+2026-01-09 14:29:37,958 - INFO - Received message: tell me about u
+2026-01-09 14:29:38,084 - INFO - Predicted tag: services, Confidence: 1.00
+2026-01-09 14:29:38,098 - INFO - 127.0.0.1 - - [09/Jan/2026 14:29:38] "POST /chat HTTP/1.1" 200 -
+2026-01-09 14:29:47,482 - INFO - Received message: company
+2026-01-09 14:29:47,606 - INFO - Predicted tag: team, Confidence: 1.00
+2026-01-09 14:29:47,618 - INFO - 127.0.0.1 - - [09/Jan/2026 14:29:47] "POST /chat HTTP/1.1" 200 -
+2026-01-09 14:30:03,937 - INFO - 127.0.0.1 - - [09/Jan/2026 14:30:03] "GET /admin HTTP/1.1" 200 -
+2026-01-09 14:30:04,241 - INFO - 127.0.0.1 - - [09/Jan/2026 14:30:04] "GET /admin/stats HTTP/1.1" 200 -
+2026-01-09 14:30:04,243 - INFO - 127.0.0.1 - - [09/Jan/2026 14:30:04] "GET /api/conversations HTTP/1.1" 200 -
+2026-01-09 14:30:31,063 - INFO - 127.0.0.1 - - [09/Jan/2026 14:30:31] "GET /admin/negative-feedback HTTP/1.1" 200 -
+2026-01-09 14:30:34,243 - INFO - 127.0.0.1 - - [09/Jan/2026 14:30:34] "GET /admin/stats HTTP/1.1" 200 -
+2026-01-09 14:30:34,244 - INFO - 127.0.0.1 - - [09/Jan/2026 14:30:34] "GET /admin/negative-feedback HTTP/1.1" 200 -
+2026-01-09 14:31:04,769 - INFO - 127.0.0.1 - - [09/Jan/2026 14:31:04] "GET /admin/negative-feedback HTTP/1.1" 200 -
+2026-01-09 14:31:04,770 - INFO - 127.0.0.1 - - [09/Jan/2026 14:31:04] "GET /admin/stats HTTP/1.1" 200 -
+2026-01-09 14:31:34,767 - INFO - 127.0.0.1 - - [09/Jan/2026 14:31:34] "GET /admin/negative-feedback HTTP/1.1" 200 -
+2026-01-09 14:31:34,768 - INFO - 127.0.0.1 - - [09/Jan/2026 14:31:34] "GET /admin/stats HTTP/1.1" 200 -
+2026-01-09 14:32:04,764 - INFO - 127.0.0.1 - - [09/Jan/2026 14:32:04] "GET /admin/negative-feedback HTTP/1.1" 200 -
+2026-01-09 14:32:04,766 - INFO - 127.0.0.1 - - [09/Jan/2026 14:32:04] "GET /admin/stats HTTP/1.1" 200 -
+2026-01-09 14:32:34,769 - INFO - 127.0.0.1 - - [09/Jan/2026 14:32:34] "GET /admin/negative-feedback HTTP/1.1" 200 -
+2026-01-09 14:32:34,769 - INFO - 127.0.0.1 - - [09/Jan/2026 14:32:34] "GET /admin/stats HTTP/1.1" 200 -
+2026-01-09 14:33:04,765 - INFO - 127.0.0.1 - - [09/Jan/2026 14:33:04] "GET /admin/negative-feedback HTTP/1.1" 200 -
+2026-01-09 14:33:04,766 - INFO - 127.0.0.1 - - [09/Jan/2026 14:33:04] "GET /admin/stats HTTP/1.1" 200 -
+2026-01-09 14:33:34,768 - INFO - 127.0.0.1 - - [09/Jan/2026 14:33:34] "GET /admin/negative-feedback HTTP/1.1" 200 -
+2026-01-09 14:33:34,769 - INFO - 127.0.0.1 - - [09/Jan/2026 14:33:34] "GET /admin/stats HTTP/1.1" 200 -
+2026-01-09 14:34:35,765 - INFO - 127.0.0.1 - - [09/Jan/2026 14:34:35] "GET /admin/negative-feedback HTTP/1.1" 200 -
+2026-01-09 14:34:35,767 - INFO - 127.0.0.1 - - [09/Jan/2026 14:34:35] "GET /admin/stats HTTP/1.1" 200 -
+2026-01-09 14:35:36,763 - INFO - 127.0.0.1 - - [09/Jan/2026 14:35:36] "GET /admin/stats HTTP/1.1" 200 -
+2026-01-09 14:35:36,766 - INFO - 127.0.0.1 - - [09/Jan/2026 14:35:36] "GET /admin/negative-feedback HTTP/1.1" 200 -
+2026-01-09 14:36:36,777 - INFO - 127.0.0.1 - - [09/Jan/2026 14:36:36] "GET /admin/negative-feedback HTTP/1.1" 200 -
+2026-01-09 14:36:36,778 - INFO - 127.0.0.1 - - [09/Jan/2026 14:36:36] "GET /admin/stats HTTP/1.1" 200 -
+2026-01-09 14:37:36,770 - INFO - 127.0.0.1 - - [09/Jan/2026 14:37:36] "GET /admin/stats HTTP/1.1" 200 -
+2026-01-09 14:37:36,772 - INFO - 127.0.0.1 - - [09/Jan/2026 14:37:36] "GET /admin/negative-feedback HTTP/1.1" 200 -
+2026-01-09 14:38:36,774 - INFO - 127.0.0.1 - - [09/Jan/2026 14:38:36] "GET /admin/stats HTTP/1.1" 200 -
+2026-01-09 14:38:36,781 - INFO - 127.0.0.1 - - [09/Jan/2026 14:38:36] "GET /admin/negative-feedback HTTP/1.1" 200 -
+2026-01-09 14:39:24,522 - INFO - 127.0.0.1 - - [09/Jan/2026 14:39:24] "GET /admin/negative-feedback HTTP/1.1" 200 -
+2026-01-09 14:39:24,524 - INFO - 127.0.0.1 - - [09/Jan/2026 14:39:24] "GET /admin/stats HTTP/1.1" 200 -
+2026-01-09 14:43:38,617 - INFO - 127.0.0.1 - - [09/Jan/2026 14:43:38] "[36mGET / HTTP/1.1[0m" 304 -
+2026-01-09 14:43:45,445 - INFO - Received message: hi
+2026-01-09 14:43:45,776 - INFO - Predicted tag: greeting, Confidence: 1.00
+2026-01-09 14:43:45,779 - INFO - 127.0.0.1 - - [09/Jan/2026 14:43:45] "POST /chat HTTP/1.1" 200 -
+2026-01-09 14:44:34,003 - INFO - Received message: need to shedule a meeting
+2026-01-09 14:44:34,095 - INFO - Predicted tag: pricing, Confidence: 0.72
+2026-01-09 14:44:34,109 - INFO - 127.0.0.1 - - [09/Jan/2026 14:44:34] "POST /chat HTTP/1.1" 200 -
+2026-01-09 14:44:49,766 - INFO - Feedback received: negative for conversation 46
+2026-01-09 14:44:49,768 - INFO - 127.0.0.1 - - [09/Jan/2026 14:44:49] "POST /feedback HTTP/1.1" 200 -
+2026-01-09 20:31:35,279 - INFO - 127.0.0.1 - - [09/Jan/2026 20:31:35] "[36mGET / HTTP/1.1[0m" 304 -
+2026-01-09 20:31:38,970 - INFO - 127.0.0.1 - - [09/Jan/2026 20:31:38] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-01-09 20:31:43,189 - INFO - Received message: hi
+2026-01-09 20:31:43,536 - INFO - Predicted tag: greeting, Confidence: 1.00
+2026-01-09 20:31:43,541 - INFO - 127.0.0.1 - - [09/Jan/2026 20:31:43] "POST /chat HTTP/1.1" 200 -
