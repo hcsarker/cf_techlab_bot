@@ -41,10 +41,10 @@ Steps:
 ## Troubleshooting
 
 - Error: `bash: line 1: web:: command not found`
-	- Cause: The Start Command was set to the full Procfile entry (`web: gunicorn ...`). Render expects only the command, without the `web:` prefix.
-	- Fix: In your Render service → Settings → Start Command, set it to:
-		- `gunicorn app:app --workers 1 --bind 0.0.0.0:$PORT --timeout 120`
-	- Tip: If you use the Blueprint (render.yaml), this is already set correctly.
+  - Cause: The Start Command was set to the full Procfile entry (`web: gunicorn ...`). Render expects only the command, without the `web:` prefix.
+  - Fix: In your Render service → Settings → Start Command, set it to:
+    - `gunicorn app:app --workers 1 --bind 0.0.0.0:$PORT --timeout 120`
+  - Tip: If you use the Blueprint (render.yaml), this is already set correctly.
 
 ## Verify
 

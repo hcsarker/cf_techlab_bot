@@ -22,7 +22,7 @@
    - Start: `gunicorn app:app --workers 1 --bind 0.0.0.0:$PORT --timeout 120`
    - Health check: `/health`
 4. Click Create Resources → wait for build and deploy.
-5. Copy your URL: `https://your-service.onrender.com`.
+5. Copy your URL: `https://cf-techlab-bot-taaw.onrender.com`.
 
 ---
 
@@ -44,21 +44,25 @@ Place this before `</body>` in your site or add as a component:
 ```html
 <!-- CF TechLab AI Chatbot (Render) -->
 <iframe
-  src="https://your-service.onrender.com/widget"
+  src="https://cf-techlab-bot-taaw.onrender.com/widget"
   style="position: fixed; bottom: 0; right: 0; width: 100%; height: 100%; border: none; z-index: 999999; pointer-events: none;"
   id="cf-chatbot-iframe"
 >
 </iframe>
 
 <style>
-  #cf-chatbot-iframe { pointer-events: none; }
+  #cf-chatbot-iframe {
+    pointer-events: none;
+  }
 </style>
 
 <script>
-  const iframe = document.getElementById('cf-chatbot-iframe');
-  document.addEventListener('mousemove', (e) => {
-    const nearCorner = e.clientX > window.innerWidth - 150 && e.clientY > window.innerHeight - 150;
-    iframe.style.pointerEvents = nearCorner ? 'auto' : 'none';
+  const iframe = document.getElementById("cf-chatbot-iframe");
+  document.addEventListener("mousemove", (e) => {
+    const nearCorner =
+      e.clientX > window.innerWidth - 150 &&
+      e.clientY > window.innerHeight - 150;
+    iframe.style.pointerEvents = nearCorner ? "auto" : "none";
   });
 </script>
 ```
@@ -68,8 +72,17 @@ Place this before `</body>` in your site or add as a component:
 ```jsx
 <iframe
   id="cf-chatbot-iframe"
-  src="https://your-service.onrender.com/widget"
-  style={{ position: 'fixed', bottom: 0, right: 0, width: '100%', height: '100%', border: 'none', zIndex: 999999, pointerEvents: 'none' }}
+  src="https://cf-techlab-bot-taaw.onrender.com/widget"
+  style={{
+    position: "fixed",
+    bottom: 0,
+    right: 0,
+    width: "100%",
+    height: "100%",
+    border: "none",
+    zIndex: 999999,
+    pointerEvents: "none",
+  }}
 />
 ```
 
@@ -79,11 +92,11 @@ Place this before `</body>` in your site or add as a component:
 
 ```bash
 # Health check
-curl https://your-service.onrender.com/health
+curl https://cf-techlab-bot-taaw.onrender.com/health
 ```
 
-- Widget: `https://your-service.onrender.com/widget`
-- Admin: `https://your-service.onrender.com/admin`
+- Widget: `https://cf-techlab-bot-taaw.onrender.com/widget`
+- Admin: `https://cf-techlab-bot-taaw.onrender.com/admin`
 
 ---
 
@@ -99,7 +112,7 @@ curl https://your-service.onrender.com/health
 
 - [ ] Push chatbot to GitHub
 - [ ] Deploy on Render (Blueprint or Web Service)
-- [ ] Copy Render URL (`your-service.onrender.com`)
+- [ ] Copy Render URL (`cf-techlab-bot-taaw.onrender.com`)
 - [ ] Update iframe `src` in your Vercel project
 - [ ] Test locally and on Vercel site
 - [ ] Verify `/health` and `/admin` work
